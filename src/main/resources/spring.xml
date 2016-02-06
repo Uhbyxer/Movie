@@ -51,6 +51,29 @@
 		</property>
 	</bean>
 	
+	
+	<bean id="event_0" class="com.epam.spring.movie.bean.Event">
+		<property name="id"  value="0" />
+		<property name="name"  value="Dead Pool" />
+		<property name="rating"  value="3" />
+		<property name="price"  value="80" />
+	</bean>
+	
+	<bean id="event_1" class="com.epam.spring.movie.bean.Event">
+		<property name="id"  value="1" />
+		<property name="name"  value="Pulp Fiction" />
+		<property name="price"  value="100" />
+	</bean>
+	
+	<bean id = "eventDaoStub" class="com.epam.spring.movie.dao.stub.EventDaoStub">
+		<property name="holder">
+			<map>
+				<entry key="0"  value-ref="event_0" />
+				<entry key="1"  value-ref="event_1" />
+			</map>
+		</property>
+	</bean>	
+	
 	<bean id="app" class="com.epam.spring.movie.App">
 	</bean>
 	

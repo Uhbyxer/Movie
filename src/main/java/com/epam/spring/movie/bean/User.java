@@ -1,16 +1,12 @@
 package com.epam.spring.movie.bean;
 
 
-public class User {
-	private Integer id;
+public class User extends BaseBean {
+
 	private String name;
+	
 	private String email;
-	public Integer getId() {
-		return id;
-	}
-	public void setId(Integer id) {
-		this.id = id;
-	}
+	
 	public String getName() {
 		return name;
 	}
@@ -26,25 +22,6 @@ public class User {
 	@Override
 	public String toString() {
 		return name + " <" + email + ">";
-	}
-	
-	@Override
-	public boolean equals(Object other) {
-		if(other == null || id == null) 
-			return false;
-		
-		if (this == other)
-			return true;
-		
-		if(other instanceof User)
-			return id.equals(((User) other).id);
-		
-		return false;
-	}
-
-	@Override
-	public int hashCode() {
-		return id == null ? 0 : id.hashCode();
 	}
 	
 }

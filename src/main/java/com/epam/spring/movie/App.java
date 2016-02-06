@@ -3,7 +3,9 @@ package com.epam.spring.movie;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.epam.spring.movie.bean.Event;
 import com.epam.spring.movie.bean.User;
+import com.epam.spring.movie.dao.EventDao;
 import com.epam.spring.movie.dao.UserDao;
 
 
@@ -39,5 +41,25 @@ public class App {
 		userDao.create(user);
 		userDao.getAll().forEach(System.out::println);
 		
+		
+		System.out.println("=============================== Event service ===============================");
+		
+		EventDao eventDao = (EventDao) CTX.getBean("eventDaoStub");
+		Event event = eventDao.getById(1);
+		System.out.println("Event by id = 1 : " + event);
+	
+		System.out.println("\nBy name = dead pool :");
+		eventDao.getEventsByName("dead pool").forEach(System.out::println);
+		
+		System.out.println("\nAll :");
+		eventDao.getAll().forEach(System.out::println);
+		
+		System.out.println("\nRemove Pulp Fiction:");
+		eventDao.remove(event);
+		eventDao.getAll().forEach(System.out::println);
+		
+		System.out.println("\nAdd Pulp Fiction:");
+		eventDao.create(event);
+		eventDao.getAll().forEach(System.out::println);		
 	}
 }
