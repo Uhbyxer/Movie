@@ -1,18 +1,10 @@
 package com.epam.spring.movie.bean;
 
 
-public class User extends BaseBean {
+public class User extends NamedBean {
 
-	private String name;
-	
 	private String email;
 	
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
 	public String getEmail() {
 		return email;
 	}

@@ -2,21 +2,11 @@ package com.epam.spring.movie.bean;
 
 import java.util.Set;
 
-public class Auditorium extends BaseBean {
-	
-	private String name;
-	
+public class Auditorium extends NamedBean {
+
 	private Integer numberOfSeats;
 	
 	private Set<Integer> vipSeats;
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
 
 	public Integer getNumberOfSeats() {
 		return numberOfSeats;

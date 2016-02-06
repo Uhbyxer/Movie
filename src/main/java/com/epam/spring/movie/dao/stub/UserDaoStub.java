@@ -1,23 +1,9 @@
 package com.epam.spring.movie.dao.stub;
 
-import java.util.List;
-
-import java.util.stream.Collectors;
-
 import com.epam.spring.movie.bean.User;
 import com.epam.spring.movie.dao.UserDao;
 
-public class UserDaoStub  extends BaseDaoStub<User> implements UserDao {
-
-	@Override
-	public List<User> getUsersByName(String name) {
-		
-		return  holder.entrySet()
-						.stream()
-						.filter(p -> p.getValue().getName().compareToIgnoreCase(name) == 0)
-						.map(p -> p.getValue())
-						.collect(Collectors.toList());
-	}
+public class UserDaoStub  extends BaseNamedDaoStub<User> implements UserDao {
 
 	@Override
 	public User getUserByEmail(String email) {
@@ -29,7 +15,6 @@ public class UserDaoStub  extends BaseDaoStub<User> implements UserDao {
 				.findFirst()
 				.orElse(null);
 	}
-
 
 	
 }

@@ -28,7 +28,7 @@ public class App {
 		System.out.println("User by email (bruce_willis@gmail.com)   : " + user);
 		
 		System.out.println("\nBy name = john doe :");
-		userDao.getUsersByName("john doe").forEach(System.out::println);
+		userDao.getListByName("john doe").forEach(System.out::println);
 		
 		System.out.println("\nAll :");
 		userDao.getAll().forEach(System.out::println);

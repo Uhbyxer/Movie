@@ -1,21 +1,11 @@
 package com.epam.spring.movie.bean;
 
-public class Event extends BaseBean {
-	
-	private String name;
+public class Event extends NamedBean {
 	
 	private int rating;
 	
 	private double price;
 	
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
 	public int getRating() {
 		return rating;
 	}
