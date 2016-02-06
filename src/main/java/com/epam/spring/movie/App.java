@@ -16,6 +16,7 @@ public class App {
 	
 
 	public static void main(String[] args) {
+		@SuppressWarnings("unused")
 		App app = (App) CTX.getBean("app");
 		
 		

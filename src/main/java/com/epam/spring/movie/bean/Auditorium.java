@@ -26,7 +26,7 @@ public class Auditorium extends NamedBean {
 	
 	@Override
 	public String toString() {
-		return name;
+		return name + "(" + numberOfSeats + ") VIP :" + vipSeats;
 		
 	}
 	

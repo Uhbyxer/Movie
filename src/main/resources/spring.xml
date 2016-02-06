@@ -78,11 +78,28 @@
 	<bean name="2d" class="com.epam.spring.movie.bean.Auditorium">
 		<property name="id"  value="0" />
 		<property name="name"  value="2D" />
+		<property name="numberOfSeats"  value="10" />
+		<property name="vipSeats">
+			<set>
+				<value>7</value>
+				<value>8</value>
+				<value>9</value>	
+			</set>
+		</property>
 	</bean>
 
 	<bean name="3d" class="com.epam.spring.movie.bean.Auditorium">
 		<property name="id"  value="1" />
 		<property name="name"  value="3D" />
+		<property name="numberOfSeats"  value="15" />
+		<property name="vipSeats">
+			<set>
+				<value>10</value>
+				<value>11</value>
+				<value>12</value>	
+				<value>13</value>	
+			</set>
+		</property>
 	</bean>	
 	
 	<bean id = "auditoriumDaoStub" class="com.epam.spring.movie.dao.stub.AuditoriumDaoStub">
