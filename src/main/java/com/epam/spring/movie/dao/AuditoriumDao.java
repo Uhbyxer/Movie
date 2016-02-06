@@ -7,6 +7,6 @@ import com.epam.spring.movie.bean.Auditorium;
 
 public interface AuditoriumDao extends BaseDao<Auditorium> {
 		
-	public List<Auditorium> getEventsByName(String name);
+	public List<Auditorium> getAuditoriumByName(String name);
 
 }
