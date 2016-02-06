@@ -102,14 +102,31 @@
 		</property>
 	</bean>	
 	
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:cinema.properties</value>
+			</list>
+		</property>
+		<property name="ignoreResourceNotFound" value="true" />
+		<property name="systemPropertiesMode">
+			<util:constant
+				static-field="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer.SYSTEM_PROPERTIES_MODE_OVERRIDE" />
+		</property>
+	</bean>	
+
+	<bean name="4d" class="com.epam.spring.movie.bean.Auditorium" p:name="${name}" p:id="${id}" p:numberOfSeats="${numberOfSeats}" p:vipSeatsString="${vipSeats}">
+	</bean>
+		
 	<bean id = "auditoriumDaoStub" class="com.epam.spring.movie.dao.stub.AuditoriumDaoStub">
 		<property name="holder">
 			<map>
 				<entry key="0"  value-ref="2d" />
 				<entry key="1"  value-ref="3d" />
+				<entry key="2"  value-ref="4d" />
 			</map>
 		</property>
-	</bean>		
+	</bean>			
 	
 	<bean id="app" class="com.epam.spring.movie.App">
 	</bean>
