@@ -16,9 +16,42 @@
  		">
 
 
+	<bean id="user_0" class="com.epam.spring.movie.bean.User">
+		<property name="id"  value="0" />
+		<property name="name"  value="Bruce Willis" />
+		<property name="email" value="Bruce_Willis@gmail.com" />
+	</bean>
+	
+	<bean id="user_1" class="com.epam.spring.movie.bean.User">
+		<property name="id"  value="1" />
+		<property name="name"  value="Laura Palmer" />
+		<property name="email" value="Laura_Palmer@gmail.com" />
+	</bean>
+	
+	<bean id="user_2" class="com.epam.spring.movie.bean.User">
+		<property name="id"  value="2" />
+		<property name="name"  value="John Doe" />
+		<property name="email" value="John_Doe@gmail.com" />
+	</bean>
+	
+	<bean id="user_3" class="com.epam.spring.movie.bean.User">
+		<property name="id"  value="3" />
+		<property name="name"  value="John Doe" />
+		<property name="email" value="John_Doe@yahoo.com" />
+	</bean>
+			
+	<bean id = "userDaoStub" class="com.epam.spring.movie.dao.stub.UserDaoStub">
+		<property name="holder">
+			<map>
+				<entry key="0"  value-ref="user_0" />
+				<entry key="1"  value-ref="user_1" />
+				<entry key="2"  value-ref="user_2" />
+				<entry key="3"  value-ref="user_3" />
+			</map>
+		</property>
+	</bean>
+	
 	<bean id="app" class="com.epam.spring.movie.App">
-		<constructor-arg value="Hello movie !"/>
-		
 	</bean>
 	
 	<context:annotation-config/>
