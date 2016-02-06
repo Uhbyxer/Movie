@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import com.epam.spring.movie.bean.Auditorium;
-import com.epam.spring.movie.bean.Event;
+
 import com.epam.spring.movie.dao.AuditoriumDao;
 
 public class AuditoriumDaoStub implements AuditoriumDao{
