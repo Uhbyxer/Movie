@@ -128,8 +128,17 @@
 		</property>
 	</bean>			
 	
-	<bean id="app" class="com.epam.spring.movie.App">
+	
+	<bean id = "userServiceImpl" class="com.epam.spring.movie.service.impl.UserServiceImpl">
+		<property name="userDao" ref="userDaoStub" />
 	</bean>
+	
+	
+	<bean id="app" class="com.epam.spring.movie.App">
+		<property name="userService" ref="userServiceImpl" />
+	</bean>
+	
+	
 	
 	<context:annotation-config/>
 

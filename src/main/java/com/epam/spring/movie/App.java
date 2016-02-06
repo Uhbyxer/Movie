@@ -1,5 +1,7 @@
 package com.epam.spring.movie;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -8,10 +10,25 @@ import com.epam.spring.movie.bean.User;
 import com.epam.spring.movie.dao.AuditoriumDao;
 import com.epam.spring.movie.dao.EventDao;
 import com.epam.spring.movie.dao.UserDao;
+import com.epam.spring.movie.service.UserService;
 
 
 
 public class App {
+	
+
+	private UserService userService;
+	
+	
+	public void setUserService(UserService userService) {
+		this.userService = userService;
+	}
+	
+	public UserService getUserService() {
+		return userService;
+	}
+
+
 	public static final ConfigurableApplicationContext CTX = new ClassPathXmlApplicationContext("spring.xml");
 	
 
@@ -23,25 +40,27 @@ public class App {
 		
 		System.out.println("=============================== User service ===============================");
 		
-		UserDao userDao = (UserDao) CTX.getBean("userDaoStub");
-		System.out.println("User by id = 1 : " + userDao.getById(1));
+		
+		UserService userService = app.getUserService();
+
+		System.out.println("User by id = 1 : " + userService.getById(1));
 	
-		User user = userDao.getUserByEmail("bruce_willis@gmail.com");
+		User user = userService.getUserByEmail("bruce_willis@gmail.com");
 		System.out.println("User by email (bruce_willis@gmail.com)   : " + user);
 		
 		System.out.println("\nBy name = john doe :");
-		userDao.getListByName("john doe").forEach(System.out::println);
+		userService.getListByName("john doe").forEach(System.out::println);
 		
 		System.out.println("\nAll :");
-		userDao.getAll().forEach(System.out::println);
+		userService.getAll().forEach(System.out::println);
 		
 		System.out.println("\nRemove Bruce:");
-		userDao.remove(user);
-		userDao.getAll().forEach(System.out::println);
+		userService.remove(user);
+		userService.getAll().forEach(System.out::println);
 		
 		System.out.println("\nAdd Bruce:");
-		userDao.create(user);
-		userDao.getAll().forEach(System.out::println);
+		userService.create(user);
+		userService.getAll().forEach(System.out::println);
 		
 		
 		System.out.println("=============================== Event service ===============================");
