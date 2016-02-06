@@ -49,7 +49,7 @@ public class App {
 		System.out.println("Event by id = 1 : " + event);
 	
 		System.out.println("\nBy name = dead pool :");
-		eventDao.getEventsByName("dead pool").forEach(System.out::println);
+		eventDao.getListByName("dead pool").forEach(System.out::println);
 		
 		System.out.println("\nAll :");
 		eventDao.getAll().forEach(System.out::println);
