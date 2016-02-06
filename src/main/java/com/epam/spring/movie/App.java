@@ -5,6 +5,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.epam.spring.movie.bean.Event;
 import com.epam.spring.movie.bean.User;
+import com.epam.spring.movie.dao.AuditoriumDao;
 import com.epam.spring.movie.dao.EventDao;
 import com.epam.spring.movie.dao.UserDao;
 
@@ -61,5 +62,14 @@ public class App {
 		System.out.println("\nAdd Pulp Fiction:");
 		eventDao.create(event);
 		eventDao.getAll().forEach(System.out::println);		
+		
+		System.out.println("=============================== Auditorium service ===============================");
+		
+		
+		AuditoriumDao auditoriumDao = (AuditoriumDao) CTX.getBean("auditoriumDaoStub");
+		System.out.println("\nAll :");
+		auditoriumDao.getAll().forEach(System.out::println);		
+		
+		
 	}
 }

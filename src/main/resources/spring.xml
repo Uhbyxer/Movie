@@ -74,6 +74,26 @@
 		</property>
 	</bean>	
 	
+	
+	<bean name="2d" class="com.epam.spring.movie.bean.Auditorium">
+		<property name="id"  value="0" />
+		<property name="name"  value="2D" />
+	</bean>
+
+	<bean name="3d" class="com.epam.spring.movie.bean.Auditorium">
+		<property name="id"  value="1" />
+		<property name="name"  value="3D" />
+	</bean>	
+	
+	<bean id = "auditoriumDaoStub" class="com.epam.spring.movie.dao.stub.AuditoriumDaoStub">
+		<property name="holder">
+			<map>
+				<entry key="0"  value-ref="2d" />
+				<entry key="1"  value-ref="3d" />
+			</map>
+		</property>
+	</bean>		
+	
 	<bean id="app" class="com.epam.spring.movie.App">
 	</bean>
 	
