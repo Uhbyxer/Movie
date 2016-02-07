@@ -286,7 +286,7 @@
 	</bean>	
 	
 
-	<import resource="discounts.xml"/>
+	
 
 	<bean id = "userServiceImpl" class="com.epam.spring.movie.service.impl.UserServiceImpl">
 		<property name="userDao" ref="userDaoStub" />
@@ -302,8 +302,9 @@
 	
 	<bean id = "ticketServiceImpl" class="com.epam.spring.movie.service.impl.TicketServiceImpl">
 		<property name="ticketDao" ref="ticketDaoStub" />
-	</bean>		
-
+	</bean>	
+		
+	<import resource="discounts.xml"/>
 
 	<bean id="app" class="com.epam.spring.movie.App">
 		<property name="userService" ref="userServiceImpl" />

@@ -38,8 +38,11 @@
 		</property>
 	</bean>	
 		
+
+		
 	<bean id = "discountStrategyServiceImpl" class="com.epam.spring.movie.service.impl.DiscountStrategyServiceImpl">
 		<property name="discountStrategyDao" ref="discountStrategyDaoStub" />
+		<property name="ticketService" ref="ticketServiceImpl" />
 	</bean>		
  		
 </beans> 		

@@ -144,5 +144,7 @@ public class App {
 		discountStrategyService.getAll().forEach(System.out::println);
 				
 		
+		
+		
 	}
 }

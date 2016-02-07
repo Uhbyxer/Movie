@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.epam.spring.movie.bean.Event;
 import com.epam.spring.movie.bean.Ticket;
+import com.epam.spring.movie.bean.User;
 import com.epam.spring.movie.dao.TicketDao;
 import com.epam.spring.movie.service.TicketService;
 
@@ -41,6 +42,11 @@ public class TicketServiceImpl implements TicketService {
 	@Override
 	public Ticket getById(Integer id) {
 		return ticketDao.getById(id);
+	}
+
+	@Override
+	public long getCountOfTicketsForUser(User user) {
+		return ticketDao.getCountOfTicketsForUser(user);
 	}
 	
 	

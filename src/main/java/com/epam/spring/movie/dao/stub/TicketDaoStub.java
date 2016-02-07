@@ -1,12 +1,13 @@
 package com.epam.spring.movie.dao.stub;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
 import com.epam.spring.movie.bean.Event;
 import com.epam.spring.movie.bean.Ticket;
+import com.epam.spring.movie.bean.User;
 import com.epam.spring.movie.dao.TicketDao;
 
 public class TicketDaoStub extends BaseDaoStub<Ticket> implements TicketDao  {
@@ -20,6 +21,18 @@ public class TicketDaoStub extends BaseDaoStub<Ticket> implements TicketDao  {
 				.filter(p -> p.getValue().getDateTime().equals(dateTime))
 				.map(p -> p.getValue())
 				.collect(Collectors.toList());
+	}
+	
+
+	@Override
+	public long getCountOfTicketsForUser(User user) {
+		
+		return 	holder.entrySet()
+				.stream()
+				.filter(p -> p.getValue().getUser().equals(user))
+				.count();
+
+	
 	}
 
 }

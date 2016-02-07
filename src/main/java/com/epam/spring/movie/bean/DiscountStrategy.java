@@ -47,4 +47,8 @@ public class DiscountStrategy extends NamedBean {
 		
 	}
 	
+	public double getValue() {
+		return ( EVERY_TICKET_DISCOUNT.equals(name) ? everyTicketDiscount : mainDiscount);
+	}
+	
 }

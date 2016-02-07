@@ -5,9 +5,12 @@ import java.util.List;
 
 import com.epam.spring.movie.bean.Event;
 import com.epam.spring.movie.bean.Ticket;
+import com.epam.spring.movie.bean.User;
 
 public interface TicketDao extends BaseDao<Ticket> {
 	
 	public List<Ticket> getTicketsForEvent(Event event, LocalDateTime dateTime);
+	
+	public long getCountOfTicketsForUser(User user);
 	
 }
