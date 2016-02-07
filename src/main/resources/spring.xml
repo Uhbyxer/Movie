@@ -136,11 +136,15 @@
 	<bean id = "eventServiceImpl" class="com.epam.spring.movie.service.impl.EventServiceImpl">
 		<property name="eventDao" ref="eventDaoStub" />
 	</bean>
-		
+	
+	<bean id = "auditoriumServiceImpl" class="com.epam.spring.movie.service.impl.AuditoriumServiceImpl">
+		<property name="auditoriumDao" ref="auditoriumDaoStub" />
+	</bean>		
 	
 	<bean id="app" class="com.epam.spring.movie.App">
 		<property name="userService" ref="userServiceImpl" />
 		<property name="eventService" ref="eventServiceImpl" />
+		<property name="auditoriumService" ref="auditoriumServiceImpl" />
 	</bean>
 	
 	

@@ -1,15 +1,12 @@
 package com.epam.spring.movie;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.epam.spring.movie.bean.Event;
 import com.epam.spring.movie.bean.User;
-import com.epam.spring.movie.dao.AuditoriumDao;
-import com.epam.spring.movie.dao.EventDao;
-import com.epam.spring.movie.dao.UserDao;
+
+import com.epam.spring.movie.service.AuditoriumService;
 import com.epam.spring.movie.service.EventService;
 import com.epam.spring.movie.service.UserService;
 
@@ -21,6 +18,8 @@ public class App {
 	private UserService userService;
 	
 	private EventService eventService;
+	
+	private AuditoriumService auditoriumService;
 	
 	
 	public void setUserService(UserService userService) {
@@ -38,16 +37,22 @@ public class App {
 	public void setEventService(EventService eventService) {
 		this.eventService = eventService;
 	}
-
-
-	public static final ConfigurableApplicationContext CTX = new ClassPathXmlApplicationContext("spring.xml");
 	
 
+	public AuditoriumService getAuditoriumService() {
+		return auditoriumService;
+	}
+
+	public void setAuditoriumService(AuditoriumService auditoriumService) {
+		this.auditoriumService = auditoriumService;
+	}
+
+
 	public static void main(String[] args) {
-		@SuppressWarnings("unused")
-		App app = (App) CTX.getBean("app");
 		
-		
+		@SuppressWarnings("resource")
+		ConfigurableApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
+		App app = (App) ctx.getBean("app");
 		
 		System.out.println("=============================== User service ===============================");
 		
@@ -97,10 +102,9 @@ public class App {
 		
 		System.out.println("=============================== Auditorium service ===============================");
 		
-		
-		AuditoriumDao auditoriumDao = (AuditoriumDao) CTX.getBean("auditoriumDaoStub");
+		AuditoriumService auditoriumService = app.getAuditoriumService();
 		System.out.println("\nAll :");
-		auditoriumDao.getAll().forEach(System.out::println);		
+		auditoriumService.getAll().forEach(System.out::println);		
 		
 		
 	}
