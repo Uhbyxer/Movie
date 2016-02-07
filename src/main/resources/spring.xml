@@ -272,35 +272,8 @@
 		</property>
 	</bean>	
 	
-	<bean id="disc_0" class="com.epam.spring.movie.bean.DiscountStrategy">
-		<property name="id"  value="0" />
-		<property name="name"  value="birthday-discount" />
-		<property name="mainDiscount" value="5" />
-	</bean>
-	
-	<bean id="disc_1" class="com.epam.spring.movie.bean.DiscountStrategy">
-		<property name="id"  value="1" />
-		<property name="name"  value="every-ticket-discount" />
-		<property name="everyTicketDiscount" value="50" />
-		<property name="everyTicketNumber" value="10" />
-	</bean>
-	
-	<bean id = "discountStrategyDaoStub" class="com.epam.spring.movie.dao.stub.DiscountStrategyDaoStub">
-		<property name="holder">
-			<map>
-				<entry key="0"  value-ref="disc_0" />
-				<entry key="1"  value-ref="disc_1" />
-			</map>
-		</property>
-	</bean>	
-		
-	<bean id = "discountStrategyServiceImpl" class="com.epam.spring.movie.service.impl.DiscountStrategyServiceImpl">
-		<property name="discountStrategyDao" ref="discountStrategyDaoStub" />
-	</bean>
 
-
-
-			
+	<import resource="discounts.xml"/>
 
 	<bean id = "userServiceImpl" class="com.epam.spring.movie.service.impl.UserServiceImpl">
 		<property name="userDao" ref="userDaoStub" />
