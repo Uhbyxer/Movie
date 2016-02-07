@@ -364,6 +364,21 @@
 		<property name="minute" value="0" />		
 	</bean>	
 	
+	<bean id="new_assign_4" class="com.epam.spring.movie.bean.Assignment">
+		<property name="id"  value="4" />
+		<property name="event"  ref="event_0" />
+		<property name="auditorium"  ref="4d" />
+		
+		<property name="date">
+			<bean factory-bean="dateFormat" factory-method="parse">
+				<constructor-arg value="2016-03-02" />
+			</bean>
+		</property>
+		
+		<property name="hour" value="23" />
+		<property name="minute" value="15" />		
+	</bean>	
+		
 	<bean id = "assignmentDaoStub" class="com.epam.spring.movie.dao.stub.AssignmentDaoStub">
 		<property name="holder">
 			<map>
@@ -407,6 +422,7 @@
 		<property name="assignmentService" ref="assignmentServiceImpl" />
 		
 		<property name="newTicketFirst" ref="new_ticket_7" />
+		<property name="newAssignment" ref="new_assign_4" />
 	</bean>
 	
 	

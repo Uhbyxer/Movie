@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.epam.spring.movie.bean.Assignment;
 import com.epam.spring.movie.bean.Event;
 import com.epam.spring.movie.bean.Ticket;
 import com.epam.spring.movie.bean.User;
@@ -36,6 +37,8 @@ public class App {
 	private Ticket newTicketFirst;
 	
 	private Ticket newTicketSecond;
+	
+	private Assignment newAssignment;
 	
 	public void setUserService(UserService userService) {
 		this.userService = userService;
@@ -101,6 +104,15 @@ public class App {
 	public void setAssignmentService(AssignmentService assignmentService) {
 		this.assignmentService = assignmentService;
 	}
+	
+	
+	public Assignment getNewAssignment() {
+		return newAssignment;
+	}
+
+	public void setNewAssignment(Assignment newAssignment) {
+		this.newAssignment = newAssignment;
+	}
 
 	public static void main(String[] args) {
 		
@@ -165,6 +177,34 @@ public class App {
 		AssignmentService assignmentService = app.getAssignmentService();
 		System.out.println("\nAll :");
 		assignmentService.getAll().forEach(System.out::println);
+		
+	
+		System.out.println("=============================== Assign auditorium for event ===========================");
+		System.out.println("Assign:");
+		System.out.println(app.newAssignment);
+		
+		if(assignmentService.isAssigned(app.newAssignment.getAuditorium(), app.newAssignment.getDateTime())) {
+			System.out.println("ASSIGNED ALREADY !!!");
+			
+		} else {
+			System.out.println("IS FREE ");
+			
+			assignmentService.create(app.newAssignment);
+		}
+		
+		System.out.println("Try again to assign the same auditorium: ");
+		
+		if(assignmentService.isAssigned(app.newAssignment.getAuditorium(), app.newAssignment.getDateTime())) {
+			System.out.println("ASSIGNED ALREADY !!!");
+			
+		} else {
+			System.out.println("IS FREE ");
+			
+			assignmentService.create(app.newAssignment);
+		}		
+		
+		System.out.println("=============================== Final Assignment of auditorium ==========================");
+		assignmentService.getAll().forEach(System.out::println);		
 		
 		
 		System.out.println("=============================== Ticket service ===============================");
