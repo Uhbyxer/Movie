@@ -16,6 +16,8 @@ public class Ticket extends BaseBean {
 	private boolean booked;
 	
 	private User user;
+	
+	private Double price;
 
 	public Event getEvent() {
 		return event;
@@ -65,10 +67,19 @@ public class Ticket extends BaseBean {
 		this.user = user;
 	}
 	
+	public Double getPrice() {
+		return price;
+	}
+
+	public void setPrice(Double price) {
+		this.price = price;
+	}
+
 	@Override
 	public String toString() {
 		return "" + event + "/" + auditorium + "/" + dateTime + "/seat: " + seat + "booked: " + booked 
-				+ (user == null ? "" : " by " + user.getEmail());
+				+ (user == null ? "" : " by " + user.getEmail()
+				+ (price == null ? "" : " $ " + price));
 	}
 	
 }

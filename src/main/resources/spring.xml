@@ -126,8 +126,60 @@
 				<entry key="2"  value-ref="4d" />
 			</map>
 		</property>
-	</bean>			
+	</bean>		
 	
+	<bean id="ticket_0" class="com.epam.spring.movie.bean.Ticket">
+		<property name="id"  value="0" />
+		<property name="event"  ref="event_0" />
+		<property name="auditorium"  ref="2d" />
+		<property name="seat"  value="1" />
+		<property name="user" ref="user_0" />
+		<property name="price" value="110" />
+	</bean>	
+	<bean id="ticket_1" class="com.epam.spring.movie.bean.Ticket">
+		<property name="id"  value="1" />
+		<property name="event"  ref="event_0" />
+		<property name="auditorium"  ref="2d" />
+		<property name="seat"  value="5" />
+		<property name="user" ref="user_1" />
+		<property name="price" value="110" />
+	</bean>		
+	<bean id="ticket_2" class="com.epam.spring.movie.bean.Ticket">
+		<property name="id"  value="2" />
+		<property name="event"  ref="event_1" />
+		<property name="auditorium"  ref="3d" />
+		<property name="seat"  value="7" />
+		<property name="user" ref="user_2" />
+		<property name="price" value="120" />
+	</bean>		
+	<bean id="ticket_3" class="com.epam.spring.movie.bean.Ticket">
+		<property name="id"  value="3" />
+		<property name="event"  ref="event_1" />
+		<property name="auditorium"  ref="3d" />
+		<property name="seat"  value="8" />
+		<property name="user" ref="user_1" />
+		<property name="price" value="120" />
+	</bean>	
+	<bean id="ticket_4" class="com.epam.spring.movie.bean.Ticket">
+		<property name="id"  value="4" />
+		<property name="event"  ref="event_0" />
+		<property name="auditorium"  ref="4d" />
+		<property name="seat"  value="5" />
+		<property name="user" ref="user_0" />
+		<property name="price" value="150" />
+	</bean>	
+	
+	<bean id = "ticketDaoStub" class="com.epam.spring.movie.dao.stub.TicketDaoStub">
+		<property name="holder">
+			<map>
+				<entry key="0"  value-ref="ticket_0" />
+				<entry key="1"  value-ref="ticket_1" />
+				<entry key="2"  value-ref="ticket_2" />
+				<entry key="3"  value-ref="ticket_3" />
+				<entry key="4"  value-ref="ticket_4" />
+			</map>
+		</property>
+	</bean>		
 	
 	<bean id = "userServiceImpl" class="com.epam.spring.movie.service.impl.UserServiceImpl">
 		<property name="userDao" ref="userDaoStub" />
@@ -141,10 +193,16 @@
 		<property name="auditoriumDao" ref="auditoriumDaoStub" />
 	</bean>		
 	
+	<bean id = "ticketServiceImpl" class="com.epam.spring.movie.service.impl.TicketServiceImpl">
+		<property name="ticketDao" ref="ticketDaoStub" />
+	</bean>		
+
+
 	<bean id="app" class="com.epam.spring.movie.App">
 		<property name="userService" ref="userServiceImpl" />
 		<property name="eventService" ref="eventServiceImpl" />
 		<property name="auditoriumService" ref="auditoriumServiceImpl" />
+		<property name="ticketService" ref="ticketServiceImpl" />
 	</bean>
 	
 	

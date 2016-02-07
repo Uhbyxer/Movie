@@ -5,9 +5,9 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.epam.spring.movie.bean.Event;
 import com.epam.spring.movie.bean.User;
-
 import com.epam.spring.movie.service.AuditoriumService;
 import com.epam.spring.movie.service.EventService;
+import com.epam.spring.movie.service.TicketService;
 import com.epam.spring.movie.service.UserService;
 
 
@@ -20,6 +20,8 @@ public class App {
 	private EventService eventService;
 	
 	private AuditoriumService auditoriumService;
+	
+	private TicketService ticketService;
 	
 	
 	public void setUserService(UserService userService) {
@@ -47,6 +49,13 @@ public class App {
 		this.auditoriumService = auditoriumService;
 	}
 
+	public TicketService getTicketService() {
+		return ticketService;
+	}
+
+	public void setTicketService(TicketService ticketService) {
+		this.ticketService = ticketService;
+	}
 
 	public static void main(String[] args) {
 		
@@ -106,6 +115,9 @@ public class App {
 		System.out.println("\nAll :");
 		auditoriumService.getAll().forEach(System.out::println);		
 		
-		
+		System.out.println("=============================== Ticket service ===============================");
+		TicketService ticketService = app.getTicketService();
+		System.out.println("\nAll :");
+		ticketService.getAll().forEach(System.out::println);		
 	}
 }
