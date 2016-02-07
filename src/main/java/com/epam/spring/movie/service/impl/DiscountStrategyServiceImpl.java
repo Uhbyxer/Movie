@@ -9,21 +9,16 @@ import com.epam.spring.movie.bean.DiscountStrategy;
 import com.epam.spring.movie.bean.Ticket;
 import com.epam.spring.movie.dao.DiscountStrategyDao;
 import com.epam.spring.movie.service.DiscountStrategyService;
-import com.epam.spring.movie.service.TicketService;
+
 
 public class DiscountStrategyServiceImpl implements DiscountStrategyService {
 
 	private DiscountStrategyDao discountStrategyDao;
 	
-	private TicketService ticketService;
-	
 	public void setDiscountStrategyDao(DiscountStrategyDao discountStrategyDao) {
 		this.discountStrategyDao = discountStrategyDao;
 	}
 	
-	public void setTicketService(TicketService ticketService) {
-		this.ticketService = ticketService;
-	}
 
 	@Override
 	public void create(DiscountStrategy discountStrategy) {
@@ -57,7 +52,7 @@ public class DiscountStrategyServiceImpl implements DiscountStrategyService {
 
 
 	@Override
-	public DiscountStrategy getBestDiscountStrategy(Ticket ticket) {
+	public DiscountStrategy getBestDiscountStrategy(Ticket ticket, long countOfTicketsForUser) {
 		
 		DiscountStrategy res = null;
 		
@@ -90,8 +85,8 @@ public class DiscountStrategyServiceImpl implements DiscountStrategyService {
 				
 			} else {
 				
-				double count = 1.0 + ticketService.getCountOfTicketsForUser(ticket.getUser());
-				if( count % discount.getEveryTicketDiscount() == 0 ) {
+				double count = 1.0 + countOfTicketsForUser;
+				if( count % discount.getEveryTicketNumber() == 0 ) {
 					
 					if(discount.getEveryTicketDiscount() > max) {
 						max = discount.getEveryTicketDiscount();
@@ -103,6 +98,7 @@ public class DiscountStrategyServiceImpl implements DiscountStrategyService {
 		}
 		
 		ticket.setDiscountStrategy(res);
+		ticket.setDiscount(max);
 		
 		return res;
 	} 

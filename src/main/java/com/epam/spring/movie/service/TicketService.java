@@ -7,8 +7,5 @@ public interface TicketService extends TicketDao {
 	
 	public void calculatePrice(Ticket ticket);
 	
-	public void bookTicket(Ticket ticket);
-	
-	
 	
 }

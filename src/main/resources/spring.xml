@@ -321,6 +321,7 @@
 	
 	<bean id = "ticketServiceImpl" class="com.epam.spring.movie.service.impl.TicketServiceImpl">
 		<property name="ticketDao" ref="ticketDaoStub" />
+		<property name="discountStrategyService" ref="discountStrategyServiceImpl"/>
 	</bean>	
 		
 	<import resource="discounts.xml"/>

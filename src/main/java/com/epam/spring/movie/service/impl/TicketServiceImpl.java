@@ -9,14 +9,21 @@ import com.epam.spring.movie.bean.Event;
 import com.epam.spring.movie.bean.Ticket;
 import com.epam.spring.movie.bean.User;
 import com.epam.spring.movie.dao.TicketDao;
+import com.epam.spring.movie.service.DiscountStrategyService;
 import com.epam.spring.movie.service.TicketService;
 
 public class TicketServiceImpl implements TicketService {
 
 	private TicketDao ticketDao;
 	
+	private DiscountStrategyService discountStrategyService;
+	
 	public void setTicketDao(TicketDao ticketDao) {
 		this.ticketDao = ticketDao;
+	}
+	
+	public void setDiscountStrategyService(DiscountStrategyService discountStrategyService) {
+		this.discountStrategyService = discountStrategyService;
 	}
 
 	@Override
@@ -70,6 +77,9 @@ public class TicketServiceImpl implements TicketService {
 		}
 		ticket.setPriceWithVip(price);
 		
+		if(ticket.getUser() != null)
+			discountStrategyService.getBestDiscountStrategy(ticket, getCountOfTicketsForUser(ticket.getUser()));
+		
 		DiscountStrategy discountStrategy = ticket.getDiscountStrategy();
 		if(discountStrategy != null) {
 			ticket.setDiscountStrategy(discountStrategy);
@@ -82,11 +92,19 @@ public class TicketServiceImpl implements TicketService {
 		ticket.setPrice(price);
 	}
 
+
+
 	@Override
-	public void bookTicket(Ticket ticket) {
-		// TODO Auto-generated method stub
-		
+	public boolean isBooked(LocalDateTime dateTime, Auditorium auditorium, Integer seat) {
+		return ticketDao.isBooked(dateTime, auditorium, seat);
 	}
+
+	@Override
+	public List<Ticket> getTicketsForUser(User user) {
+		return ticketDao.getTicketsForUser(user);
+	}
+
+
 	
 	
 

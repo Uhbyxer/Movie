@@ -6,6 +6,6 @@ import com.epam.spring.movie.dao.DiscountStrategyDao;
 
 public interface DiscountStrategyService extends DiscountStrategyDao {
 	
-	public DiscountStrategy getBestDiscountStrategy(Ticket ticket); 
+	public DiscountStrategy getBestDiscountStrategy(Ticket ticket, long countOfTicketsForUser); 
 	
 }
