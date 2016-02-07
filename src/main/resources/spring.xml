@@ -16,16 +16,32 @@
  		">
 
 
+	<bean id="dateFormat" class="java.text.SimpleDateFormat">
+		<constructor-arg value="yyyy-MM-dd" />
+	</bean>
+
 	<bean id="user_0" class="com.epam.spring.movie.bean.User">
 		<property name="id"  value="0" />
 		<property name="name"  value="Bruce Willis" />
 		<property name="email" value="Bruce_Willis@gmail.com" />
+		
+		<property name="birthDate">
+			<bean factory-bean="dateFormat" factory-method="parse">
+				<constructor-arg value="1955-03-19" />
+			</bean>
+		</property>
 	</bean>
 	
 	<bean id="user_1" class="com.epam.spring.movie.bean.User">
 		<property name="id"  value="1" />
 		<property name="name"  value="Laura Palmer" />
 		<property name="email" value="Laura_Palmer@gmail.com" />
+		
+		<property name="birthDate">
+			<bean factory-bean="dateFormat" factory-method="parse">
+				<constructor-arg value="1992-03-01" />
+			</bean>
+		</property>		
 	</bean>
 	
 	<bean id="user_2" class="com.epam.spring.movie.bean.User">
@@ -128,9 +144,6 @@
 		</property>
 	</bean>		
 	
-	<bean id="dateFormat" class="java.text.SimpleDateFormat">
-		<constructor-arg value="yyyy-MM-dd" />
-	</bean>
 		
 	<bean id="ticket_0" class="com.epam.spring.movie.bean.Ticket">
 		<property name="id"  value="0" />
