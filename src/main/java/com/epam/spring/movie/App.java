@@ -1,9 +1,12 @@
 package com.epam.spring.movie;
 
+import java.time.LocalDateTime;
+
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.epam.spring.movie.bean.Event;
+import com.epam.spring.movie.bean.Ticket;
 import com.epam.spring.movie.bean.User;
 import com.epam.spring.movie.service.AuditoriumService;
 import com.epam.spring.movie.service.EventService;
@@ -119,5 +122,11 @@ public class App {
 		TicketService ticketService = app.getTicketService();
 		System.out.println("\nAll :");
 		ticketService.getAll().forEach(System.out::println);		
+		
+		
+		
+		LocalDateTime dt = LocalDateTime.of(2016, 03, 01, 18, 30);
+		System.out.println("\nFor event :" + event.getName() + " and time: " + dt);
+		ticketService.getTicketsForEvent(event, dt).forEach(System.out::println);
 	}
 }
