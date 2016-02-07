@@ -303,10 +303,78 @@
 		<property name="minute" value="45" />		
 	</bean>
 	
-
-
 	
+	<bean id="assign_0" class="com.epam.spring.movie.bean.Assignment">
+		<property name="id"  value="0" />
+		<property name="event"  ref="event_0" />
+		<property name="auditorium"  ref="2d" />
+		
+		<property name="date">
+			<bean factory-bean="dateFormat" factory-method="parse">
+				<constructor-arg value="2016-03-01" />
+			</bean>
+		</property>
+		
+		<property name="hour" value="18" />
+		<property name="minute" value="30" />
+	</bean>	
+	
+	<bean id="assign_1" class="com.epam.spring.movie.bean.Assignment">
+		<property name="id"  value="1" />
+		<property name="event"  ref="event_1" />
+		<property name="auditorium"  ref="3d" />
 
+		<property name="date">
+			<bean factory-bean="dateFormat" factory-method="parse">
+				<constructor-arg value="2016-03-01" />
+			</bean>
+		</property>
+		
+		<property name="hour" value="18" />
+		<property name="minute" value="30" />
+	</bean>
+	
+	<bean id="assign_2" class="com.epam.spring.movie.bean.Assignment">
+		<property name="id"  value="2" />
+		<property name="event"  ref="event_1" />
+		<property name="auditorium"  ref="3d" />
+		
+		<property name="date">
+			<bean factory-bean="dateFormat" factory-method="parse">
+				<constructor-arg value="2016-03-01" />
+			</bean>
+		</property>
+		
+		<property name="hour" value="21" />
+		<property name="minute" value="45" />
+	</bean>	
+	
+	<bean id="assign_3" class="com.epam.spring.movie.bean.Assignment">
+		<property name="id"  value="3" />
+		<property name="event"  ref="event_0" />
+		<property name="auditorium"  ref="4d" />
+		
+		<property name="date">
+			<bean factory-bean="dateFormat" factory-method="parse">
+				<constructor-arg value="2016-03-02" />
+			</bean>
+		</property>
+		
+		<property name="hour" value="20" />
+		<property name="minute" value="0" />		
+	</bean>	
+	
+	<bean id = "assignmentDaoStub" class="com.epam.spring.movie.dao.stub.AssignmentDaoStub">
+		<property name="holder">
+			<map>
+				<entry key="0"  value-ref="assign_0" />
+				<entry key="1"  value-ref="assign_1" />
+				<entry key="2"  value-ref="assign_2" />
+				<entry key="3"  value-ref="assign_3" />
+			</map>
+		</property>
+	</bean>	
+	
 	<bean id = "userServiceImpl" class="com.epam.spring.movie.service.impl.UserServiceImpl">
 		<property name="userDao" ref="userDaoStub" />
 	</bean>
@@ -323,7 +391,11 @@
 		<property name="ticketDao" ref="ticketDaoStub" />
 		<property name="discountStrategyService" ref="discountStrategyServiceImpl"/>
 	</bean>	
-		
+	
+	<bean id = "assignmentServiceImpl" class="com.epam.spring.movie.service.impl.AssignmentServiceImpl">
+		<property name="assignmentDao" ref="assignmentDaoStub" />
+	</bean>	
+			
 	<import resource="discounts.xml"/>
 
 	<bean id="app" class="com.epam.spring.movie.App">
@@ -332,6 +404,7 @@
 		<property name="auditoriumService" ref="auditoriumServiceImpl" />
 		<property name="ticketService" ref="ticketServiceImpl" />
 		<property name="discountStrategyService" ref="discountStrategyServiceImpl" />
+		<property name="assignmentService" ref="assignmentServiceImpl" />
 		
 		<property name="newTicketFirst" ref="new_ticket_7" />
 	</bean>

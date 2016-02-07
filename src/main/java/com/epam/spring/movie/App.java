@@ -9,6 +9,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import com.epam.spring.movie.bean.Event;
 import com.epam.spring.movie.bean.Ticket;
 import com.epam.spring.movie.bean.User;
+import com.epam.spring.movie.service.AssignmentService;
 import com.epam.spring.movie.service.AuditoriumService;
 import com.epam.spring.movie.service.DiscountStrategyService;
 import com.epam.spring.movie.service.EventService;
@@ -29,6 +30,8 @@ public class App {
 	private TicketService ticketService;
 	
 	private DiscountStrategyService discountStrategyService;
+	
+	private AssignmentService assignmentService;
 	
 	private Ticket newTicketFirst;
 	
@@ -90,6 +93,14 @@ public class App {
 	public void setNewTicketSecond(Ticket newTicketSecond) {
 		this.newTicketSecond = newTicketSecond;
 	}
+	
+	public AssignmentService getAssignmentService() {
+		return assignmentService;
+	}
+
+	public void setAssignmentService(AssignmentService assignmentService) {
+		this.assignmentService = assignmentService;
+	}
 
 	public static void main(String[] args) {
 		
@@ -149,6 +160,13 @@ public class App {
 		System.out.println("\nAll :");
 		auditoriumService.getAll().forEach(System.out::println);		
 		
+		
+		System.out.println("=============================== Assignment auditorium ==========================");
+		AssignmentService assignmentService = app.getAssignmentService();
+		System.out.println("\nAll :");
+		assignmentService.getAll().forEach(System.out::println);
+		
+		
 		System.out.println("=============================== Ticket service ===============================");
 		TicketService ticketService = app.getTicketService();
 		System.out.println("\nAll :");
@@ -199,10 +217,6 @@ public class App {
 		
 		System.out.println("\nYour booked tickets:");
 		ticketService.getTicketsForUser(app.newTicketFirst.getUser()).forEach(System.out::println);
-		
-		
-		
-		
 		
 	}
 }

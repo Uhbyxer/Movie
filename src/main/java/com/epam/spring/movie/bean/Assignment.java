@@ -1,6 +1,7 @@
 package com.epam.spring.movie.bean;
 
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 
 public class Assignment extends BaseBean {
 	
@@ -24,6 +25,18 @@ public class Assignment extends BaseBean {
 
 	public void setDateTime(LocalDateTime dateTime) {
 		this.dateTime = dateTime;
+	}
+	
+	public void setDate(java.util.Date date) {
+		dateTime = LocalDateTime.ofInstant(date.toInstant(), ZoneId.systemDefault());
+	}
+	
+	public void setHour(int hour) {
+		dateTime = dateTime.withHour(hour);
+	}
+	
+	public void setMinute(int minute) {
+		dateTime = dateTime.withMinute(minute);
 	}
 
 	public Auditorium getAuditorium() {
