@@ -168,6 +168,13 @@
 		<property name="user" ref="user_0" />
 		<property name="price" value="150" />
 	</bean>	
+	<bean id="ticket_5" class="com.epam.spring.movie.bean.Ticket">
+		<property name="id"  value="5" />
+		<property name="event"  ref="event_0" />
+		<property name="auditorium"  ref="4d" />
+		<property name="seat"  value="6" />
+		<property name="price" value="150" />
+	</bean>		
 	
 	<bean id = "ticketDaoStub" class="com.epam.spring.movie.dao.stub.TicketDaoStub">
 		<property name="holder">
@@ -177,6 +184,7 @@
 				<entry key="2"  value-ref="ticket_2" />
 				<entry key="3"  value-ref="ticket_3" />
 				<entry key="4"  value-ref="ticket_4" />
+				<entry key="5"  value-ref="ticket_5" />
 			</map>
 		</property>
 	</bean>		
