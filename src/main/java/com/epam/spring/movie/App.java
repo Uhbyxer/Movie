@@ -1,5 +1,6 @@
 package com.epam.spring.movie;
 
+import java.io.ObjectInputStream.GetField;
 import java.time.LocalDateTime;
 
 import org.springframework.context.ConfigurableApplicationContext;
@@ -29,6 +30,9 @@ public class App {
 	
 	private DiscountStrategyService discountStrategyService;
 	
+	private Ticket newTicketFirst;
+	
+	private Ticket newTicketSecond;
 	
 	public void setUserService(UserService userService) {
 		this.userService = userService;
@@ -69,6 +73,22 @@ public class App {
 
 	public void setDiscountStrategyService(DiscountStrategyService discountStrategyService) {
 		this.discountStrategyService = discountStrategyService;
+	}
+	
+	public Ticket getNewTicketFirst() {
+		return newTicketFirst;
+	}
+
+	public void setNewTicketFirst(Ticket newTicketFirst) {
+		this.newTicketFirst = newTicketFirst;
+	}
+
+	public Ticket getNewTicketSecond() {
+		return newTicketSecond;
+	}
+
+	public void setNewTicketSecond(Ticket newTicketSecond) {
+		this.newTicketSecond = newTicketSecond;
 	}
 
 	public static void main(String[] args) {
@@ -144,6 +164,14 @@ public class App {
 		discountStrategyService.getAll().forEach(System.out::println);
 				
 		
+		System.out.println("=============================== Buy Ticket ===============================");
+		System.out.println("Tiket:");
+		System.out.println(app.newTicketFirst);
+		
+		ticketService.calculatePrice(app.newTicketFirst);
+		
+		System.out.println("\nBill details: ");
+		System.out.println(app.newTicketFirst.getBillDetails());
 		
 		
 	}

@@ -78,6 +78,7 @@
 	<bean id="event_1" class="com.epam.spring.movie.bean.Event">
 		<property name="id"  value="1" />
 		<property name="name"  value="Pulp Fiction" />
+		<property name="rating"  value="2" />
 		<property name="price"  value="100" />
 	</bean>
 	
@@ -285,6 +286,24 @@
 		</property>
 	</bean>	
 	
+	<bean id="new_ticket_7" class="com.epam.spring.movie.bean.Ticket">
+		<property name="id"  value="7" />
+		<property name="event"  ref="event_1" />
+		<property name="auditorium"  ref="3d" />
+		<property name="seat"  value="10" />
+		<property name="user" ref="user_1" />
+		
+		<property name="date">
+			<bean factory-bean="dateFormat" factory-method="parse">
+				<constructor-arg value="2016-03-01" />
+			</bean>
+		</property>
+		
+		<property name="hour" value="21" />
+		<property name="minute" value="45" />		
+	</bean>
+	
+
 
 	
 
@@ -312,6 +331,8 @@
 		<property name="auditoriumService" ref="auditoriumServiceImpl" />
 		<property name="ticketService" ref="ticketServiceImpl" />
 		<property name="discountStrategyService" ref="discountStrategyServiceImpl" />
+		
+		<property name="newTicketFirst" ref="new_ticket_7" />
 	</bean>
 	
 	

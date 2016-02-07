@@ -3,6 +3,8 @@ package com.epam.spring.movie.service.impl;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import com.epam.spring.movie.bean.Auditorium;
+import com.epam.spring.movie.bean.DiscountStrategy;
 import com.epam.spring.movie.bean.Event;
 import com.epam.spring.movie.bean.Ticket;
 import com.epam.spring.movie.bean.User;
@@ -47,6 +49,43 @@ public class TicketServiceImpl implements TicketService {
 	@Override
 	public long getCountOfTicketsForUser(User user) {
 		return ticketDao.getCountOfTicketsForUser(user);
+	}
+
+	@Override
+	public void calculatePrice(Ticket ticket) {
+		
+		if(ticket.getEvent() == null) return;
+		
+		double price = ticket.getEvent().getPrice();
+		ticket.setPriceBase(price);
+		
+		price +=  ((double) ticket.getEvent().getRating()) / 10.0 * price;
+		ticket.setPriceWithRaiting(price);
+		
+		Auditorium auditorium = ticket.getAuditorium();
+		if(auditorium != null) {
+			if (auditorium.getVipSeats() != null && auditorium.getVipSeats().contains(ticket.getSeat())) {
+				price *= 2;
+			}
+		}
+		ticket.setPriceWithVip(price);
+		
+		DiscountStrategy discountStrategy = ticket.getDiscountStrategy();
+		if(discountStrategy != null) {
+			ticket.setDiscountStrategy(discountStrategy);
+			double discount = discountStrategy.getValue();
+			price *= (100.0 - discount) / 100 ;
+			
+			ticket.setDiscount(discount);
+		}
+		
+		ticket.setPrice(price);
+	}
+
+	@Override
+	public void bookTicket(Ticket ticket) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	

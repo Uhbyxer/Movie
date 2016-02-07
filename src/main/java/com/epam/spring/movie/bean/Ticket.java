@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 
 
+
 public class Ticket extends BaseBean {
 	
 	private Event event;
@@ -16,6 +17,16 @@ public class Ticket extends BaseBean {
 	private Integer seat;
 	
 	private User user;
+	
+	private Double priceBase;
+	
+	private Double priceWithRaiting;
+	
+	private Double priceWithVip;
+	
+	private DiscountStrategy discountStrategy;
+	
+	private Double discount;
 	
 	private Double price;
 
@@ -71,6 +82,47 @@ public class Ticket extends BaseBean {
 		this.user = user;
 	}
 	
+	public Double getPriceBase() {
+		return priceBase;
+	}
+
+	public void setPriceBase(Double priceBase) {
+		this.priceBase = priceBase;
+	}
+
+	public Double getPriceWithRaiting() {
+		return priceWithRaiting;
+	}
+
+	public void setPriceWithRaiting(Double priceWithRaiting) {
+		this.priceWithRaiting = priceWithRaiting;
+	}
+
+	public Double getPriceWithVip() {
+		return priceWithVip;
+	}
+
+	public void setPriceWithVip(Double priceWithVip) {
+		this.priceWithVip = priceWithVip;
+	}
+
+	public DiscountStrategy getDiscountStrategy() {
+		return discountStrategy;
+	}
+
+	public void setDiscountStrategy(DiscountStrategy discountStrategy) {
+		this.discountStrategy = discountStrategy;
+	}
+
+	public Double getDiscount() {
+		return discount;
+	}
+
+	public void setDiscount(Double discount) {
+		this.discount = discount;
+	}
+
+
 	public Double getPrice() {
 		return price;
 	}
@@ -84,6 +136,38 @@ public class Ticket extends BaseBean {
 		return "" + event.getName() + "/" + auditorium.getName() + "/" + dateTime + "/seat: " + seat 
 				+ (user == null ? "" : " by " + user.getEmail()
 				+ (price == null ? "" : " $ " + price));
+	}
+	
+	public String getBillDetails() {
+		StringBuffer res = new StringBuffer();
+		
+		if(priceBase != null) {
+			res.append("Base: ").append(priceBase).append("\n");
+		}
+		
+		if(priceWithRaiting != null) {
+			res.append("Rating: ").append(priceWithRaiting).append("\n");
+		}
+		
+		if(priceWithVip != null) {
+			res.append("VIP: ").append(priceWithVip).append("\n");
+		}
+		
+		if(discountStrategy != null) {
+			res.append("Discount strategy: ").append(discountStrategy).append("\n");
+		} else {
+			res.append("No discount strategy\n");
+		}
+		
+		if(discount != null) {
+			res.append("Discount: ").append(discount).append(" % \n");
+		}
+		
+		if(price != null) {
+			res.append("FINAL PRICE: ").append(price).append("\n");
+		}
+		
+		return res.toString();
 	}
 
 }

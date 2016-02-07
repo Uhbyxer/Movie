@@ -102,6 +102,8 @@ public class DiscountStrategyServiceImpl implements DiscountStrategyService {
 			}
 		}
 		
+		ticket.setDiscountStrategy(res);
+		
 		return res;
 	} 
 

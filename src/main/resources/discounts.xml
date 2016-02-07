@@ -26,7 +26,7 @@
 		<property name="id"  value="1" />
 		<property name="name"  value="every-ticket-discount" />
 		<property name="everyTicketDiscount" value="50" />
-		<property name="everyTicketNumber" value="10" />
+		<property name="everyTicketNumber" value="3" />
 	</bean>
 	
 	<bean id = "discountStrategyDaoStub" class="com.epam.spring.movie.dao.stub.DiscountStrategyDaoStub">
