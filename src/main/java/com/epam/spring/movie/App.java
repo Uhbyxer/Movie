@@ -9,6 +9,7 @@ import com.epam.spring.movie.bean.Event;
 import com.epam.spring.movie.bean.Ticket;
 import com.epam.spring.movie.bean.User;
 import com.epam.spring.movie.service.AuditoriumService;
+import com.epam.spring.movie.service.DiscountStrategyService;
 import com.epam.spring.movie.service.EventService;
 import com.epam.spring.movie.service.TicketService;
 import com.epam.spring.movie.service.UserService;
@@ -25,6 +26,8 @@ public class App {
 	private AuditoriumService auditoriumService;
 	
 	private TicketService ticketService;
+	
+	private DiscountStrategyService discountStrategyService;
 	
 	
 	public void setUserService(UserService userService) {
@@ -58,6 +61,14 @@ public class App {
 
 	public void setTicketService(TicketService ticketService) {
 		this.ticketService = ticketService;
+	}
+	
+	public DiscountStrategyService getDiscountStrategyService() {
+		return discountStrategyService;
+	}
+
+	public void setDiscountStrategyService(DiscountStrategyService discountStrategyService) {
+		this.discountStrategyService = discountStrategyService;
 	}
 
 	public static void main(String[] args) {
@@ -123,10 +134,15 @@ public class App {
 		System.out.println("\nAll :");
 		ticketService.getAll().forEach(System.out::println);		
 		
-		
-		
 		LocalDateTime dt = LocalDateTime.of(2016, 03, 01, 18, 30);
 		System.out.println("\nFor event :" + event.getName() + " and time: " + dt);
 		ticketService.getTicketsForEvent(event, dt).forEach(System.out::println);
+		
+		System.out.println("=============================== Discount strategy ===============================");
+		DiscountStrategyService discountStrategyService = app.getDiscountStrategyService();
+		System.out.println("Discount strategies :");
+		discountStrategyService.getAll().forEach(System.out::println);
+				
+		
 	}
 }
