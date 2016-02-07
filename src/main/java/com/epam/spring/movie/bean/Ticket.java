@@ -3,7 +3,7 @@ package com.epam.spring.movie.bean;
 import java.time.LocalDateTime;
 
 
-public class Booking extends BaseBean {
+public class Ticket extends BaseBean {
 	
 	private Event event;
 	
