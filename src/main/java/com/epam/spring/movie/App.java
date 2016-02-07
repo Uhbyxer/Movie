@@ -10,6 +10,7 @@ import com.epam.spring.movie.bean.User;
 import com.epam.spring.movie.dao.AuditoriumDao;
 import com.epam.spring.movie.dao.EventDao;
 import com.epam.spring.movie.dao.UserDao;
+import com.epam.spring.movie.service.EventService;
 import com.epam.spring.movie.service.UserService;
 
 
@@ -19,6 +20,8 @@ public class App {
 
 	private UserService userService;
 	
+	private EventService eventService;
+	
 	
 	public void setUserService(UserService userService) {
 		this.userService = userService;
@@ -26,6 +29,14 @@ public class App {
 	
 	public UserService getUserService() {
 		return userService;
+	}
+
+	public EventService getEventService() {
+		return eventService;
+	}
+
+	public void setEventService(EventService eventService) {
+		this.eventService = eventService;
 	}
 
 
@@ -65,23 +76,24 @@ public class App {
 		
 		System.out.println("=============================== Event service ===============================");
 		
-		EventDao eventDao = (EventDao) CTX.getBean("eventDaoStub");
-		Event event = eventDao.getById(1);
+		EventService eventService = app.getEventService();
+		
+		Event event = eventService.getById(1);
 		System.out.println("Event by id = 1 : " + event);
 	
 		System.out.println("\nBy name = dead pool :");
-		eventDao.getListByName("dead pool").forEach(System.out::println);
+		eventService.getListByName("dead pool").forEach(System.out::println);
 		
 		System.out.println("\nAll :");
-		eventDao.getAll().forEach(System.out::println);
+		eventService.getAll().forEach(System.out::println);
 		
 		System.out.println("\nRemove Pulp Fiction:");
-		eventDao.remove(event);
-		eventDao.getAll().forEach(System.out::println);
+		eventService.remove(event);
+		eventService.getAll().forEach(System.out::println);
 		
 		System.out.println("\nAdd Pulp Fiction:");
-		eventDao.create(event);
-		eventDao.getAll().forEach(System.out::println);		
+		eventService.create(event);
+		eventService.getAll().forEach(System.out::println);		
 		
 		System.out.println("=============================== Auditorium service ===============================");
 		

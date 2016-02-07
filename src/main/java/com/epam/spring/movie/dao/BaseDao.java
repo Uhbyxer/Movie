@@ -6,9 +6,9 @@ import java.util.List;
 
 public interface BaseDao<T> {
 	
-	public void create(T user);
+	public void create(T t);
 
-	public void remove(T user);
+	public void remove(T t);
 
 	public List<T> getAll();
 	

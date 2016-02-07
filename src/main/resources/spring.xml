@@ -133,9 +133,14 @@
 		<property name="userDao" ref="userDaoStub" />
 	</bean>
 	
+	<bean id = "eventServiceImpl" class="com.epam.spring.movie.service.impl.EventServiceImpl">
+		<property name="eventDao" ref="eventDaoStub" />
+	</bean>
+		
 	
 	<bean id="app" class="com.epam.spring.movie.App">
 		<property name="userService" ref="userServiceImpl" />
+		<property name="eventService" ref="eventServiceImpl" />
 	</bean>
 	
 	
