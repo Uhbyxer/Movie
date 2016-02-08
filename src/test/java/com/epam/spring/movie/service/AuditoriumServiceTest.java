@@ -13,9 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
 import com.epam.spring.movie.AbstractTestCase;
-import com.epam.spring.movie.bean.Assignment;
 import com.epam.spring.movie.bean.Auditorium;
-import com.epam.spring.movie.bean.Event;
+
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class AuditoriumServiceTest extends AbstractTestCase {
