@@ -77,7 +77,7 @@ public class EventServiceTest extends AbstractTestCase {
 	@Test
 	public void testGetById() {
 		Event event = eventService.getById(1);
-		System.out.println("User event with id = 1 : " + event);
+		System.out.println("Event with id = 1 : " + event);
 		assertEquals(event.getId(), Integer.valueOf(1));
 		
 	}
@@ -90,6 +90,15 @@ public class EventServiceTest extends AbstractTestCase {
 		for (Event event : events) {
 			assertEquals(event.getName(), NAME);
 		}
+	}
+	
+	@Test
+	public void testGetByName() {
+		Event event = eventService.getByName(NAME);
+		System.out.println("Event with name =  : " + NAME);
+		System.out.println(event);
+		assertEquals(event.getName(), NAME);
+		
 	}
 
 }

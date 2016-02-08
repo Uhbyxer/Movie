@@ -40,6 +40,11 @@ public class EventServiceImpl implements EventService {
 		return eventDao.getListByName(name);
 	}
 
+	@Override
+	public Event getByName(String name) {
+		return eventDao.getByName(name);
+	}
+
 
 
 }
