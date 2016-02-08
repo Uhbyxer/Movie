@@ -29,7 +29,7 @@ public class UserServiceTest extends AbstractTestCase{
 	
 	@BeforeClass
 	public static void beforeClass() {
-		System.out.println("UserService Tests --->");
+		System.out.println("\n*********************************************** UserService Tests --->");
 	}
 	
 	@Before
