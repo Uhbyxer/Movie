@@ -3,17 +3,13 @@ package com.epam.spring.movie.service.impl;
 import java.util.List;
 
 
-
-
-
-
-
 import com.epam.spring.movie.bean.User;
 import com.epam.spring.movie.dao.UserDao;
+
 import com.epam.spring.movie.service.UserService;
 
 
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl  implements UserService {
 	
 	private UserDao userDao;
 	
