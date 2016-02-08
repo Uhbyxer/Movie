@@ -3,7 +3,8 @@ package com.epam.spring.movie.service;
 import static org.junit.Assert.*;
 
 import java.util.List;
-import java.util.jar.Attributes.Name;
+
+
 
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -13,8 +14,8 @@ import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.epam.spring.movie.AbstractTestCase;
+import com.epam.spring.movie.bean.Assignment;
 import com.epam.spring.movie.bean.Event;
-import com.epam.spring.movie.bean.User;
 import com.epam.spring.movie.service.EventService;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
@@ -26,9 +27,12 @@ public class EventServiceTest extends AbstractTestCase {
 	@Autowired
 	private EventService eventService;
 	
+	
 	public void setEventService(EventService eventService) {
 		this.eventService = eventService;
 	}
+	
+
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
