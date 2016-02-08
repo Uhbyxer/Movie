@@ -63,7 +63,7 @@ public class AssignmentServiceTest extends AbstractTestCase {
 
 	@Test
 	public void testRemove() {
-		System.out.println("Removing " + newAssignment);
+		System.out.println("Removing assigment" + newAssignment);
 		assignmentService.remove(newAssignment);
 		Assignment assignment = assignmentService.getById(newAssignment.getId());
 		assertNull(assignment);

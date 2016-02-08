@@ -119,6 +119,20 @@
 		</property>
 	</bean>	
 	
+	<bean name="imax" class="com.epam.spring.movie.bean.Auditorium">
+		<property name="id"  value="10" />
+		<property name="name"  value="IMAX 3D" />
+		<property name="numberOfSeats"  value="30" />
+		<property name="vipSeats">
+			<set>
+				<value>25</value>
+				<value>26</value>
+				<value>27</value>	
+				<value>28</value>	
+			</set>
+		</property>
+	</bean>	
+		
 	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="locations">
 			<list>
