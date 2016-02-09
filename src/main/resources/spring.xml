@@ -68,7 +68,7 @@
 	</bean>
 	
 	
-	<bean id="event_0" class="com.epam.spring.movie.bean.Event">
+	<bean id="event_0"  class="com.epam.spring.movie.bean.Event">
 		<property name="id"  value="0" />
 		<property name="name"  value="Dead Pool" />
 		<property name="rating"  value="3" />
