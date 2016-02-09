@@ -6,7 +6,7 @@ import java.time.ZoneId;
 
 
 
-public class Ticket extends BaseBean {
+public class Ticket extends BaseBean implements Cloneable{
 	
 	private Event event;
 	
@@ -129,6 +129,11 @@ public class Ticket extends BaseBean {
 
 	public void setPrice(Double price) {
 		this.price = price;
+	}
+	
+	@Override
+	public Object clone() throws CloneNotSupportedException {
+		return super.clone();
 	}
 
 	@Override
