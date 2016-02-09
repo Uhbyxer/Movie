@@ -225,35 +225,20 @@ public class App {
 		System.out.println("=============================== Buy Ticket ===============================");
 		System.out.println("Tiket:");
 		System.out.println(app.newTicketFirst);
-		
-		if(ticketService.isBooked(app.newTicketFirst.getDateTime(), app.newTicketFirst.getAuditorium(), app.newTicketFirst.getSeat())) {
+		try {
+			ticketService.bookTicket(app.newTicketFirst);
 			
+		} catch (Exception e) {
 			System.out.println("BOOKED ALREADY !!!");
-			
-		} else {
-			System.out.println("IS FREE ");
-			
-			ticketService.calculatePrice(app.newTicketFirst);
-			ticketService.create(app.newTicketFirst);
-			
-			System.out.println("\nBill details: ");
-			System.out.println(app.newTicketFirst.getBillDetails());
 		}
-		
 		System.out.println("Try again to buy previous ticket: ");
-		if(ticketService.isBooked(app.newTicketFirst.getDateTime(), app.newTicketFirst.getAuditorium(), app.newTicketFirst.getSeat())) {
+		try {
+			ticketService.bookTicket(app.newTicketFirst);
 			
+		} catch (Exception e) {
 			System.out.println("BOOKED ALREADY !!!");
-			
-		} else {
-			System.out.println("IS FREE ");
-			
-			ticketService.calculatePrice(app.newTicketFirst);
-			ticketService.create(app.newTicketFirst);
-			
-			System.out.println("\nBill details: ");
-			System.out.println(app.newTicketFirst.getBillDetails());
 		}
+		
 		
 		System.out.println("\nYour booked tickets:");
 		ticketService.getTicketsForUser(app.newTicketFirst.getUser()).forEach(System.out::println);

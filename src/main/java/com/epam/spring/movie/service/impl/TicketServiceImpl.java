@@ -9,6 +9,7 @@ import com.epam.spring.movie.bean.Event;
 import com.epam.spring.movie.bean.Ticket;
 import com.epam.spring.movie.bean.User;
 import com.epam.spring.movie.dao.TicketDao;
+import com.epam.spring.movie.exception.BookException;
 import com.epam.spring.movie.service.DiscountStrategyService;
 import com.epam.spring.movie.service.TicketService;
 
@@ -109,6 +110,20 @@ public class TicketServiceImpl implements TicketService {
 	@Override
 	public List<Ticket> getTicketsForUser(User user) {
 		return ticketDao.getTicketsForUser(user);
+	}
+
+	@Override
+	public void bookTicket(Ticket ticket) {
+
+		if(isBooked(ticket.getDateTime(), ticket.getAuditorium(), ticket.getSeat())) {
+			throw new BookException("BOOKED ALREADY !!!");
+			
+		} else {
+			calculatePrice(ticket);
+			create(ticket);
+		}
+		
+		
 	}
 
 

@@ -73,15 +73,7 @@ public class TicketServiceTest extends AbstractTestCase {
 		
 		System.out.println("Try to book ticket: " + newTicketFirst);
 		
-		if(ticketService.isBooked(newTicketFirst.getDateTime(), newTicketFirst.getAuditorium(), newTicketFirst.getSeat())) {
-			System.out.println("BOOKED ALREADY !!!");
-			
-		} else {
-			//System.out.println("IS FREE ");
-			ticketService.calculatePrice(newTicketFirst);
-			ticketService.create(newTicketFirst);
-			//System.out.println(newTicketFirst.getBillDetails());		
-		}
+		ticketService.bookTicket(newTicketFirst);
 		
 		assertEquals(before + 1, ticketService.getAll().size());
 }
