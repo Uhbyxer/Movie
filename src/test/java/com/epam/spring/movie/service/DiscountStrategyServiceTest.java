@@ -2,7 +2,7 @@ package com.epam.spring.movie.service;
 
 import static org.junit.Assert.*;
 
-import java.util.Dictionary;
+
 import java.util.List;
 
 import org.junit.Before;
@@ -27,8 +27,6 @@ public class DiscountStrategyServiceTest extends AbstractTestCase {
 	@Qualifier("new_ticket_7")
 	private Ticket newTicketFirst;
 	
-	//@Autowired
-	private Ticket newTicketSecond;
 	
 	@Autowired
 	private TicketService ticketService;

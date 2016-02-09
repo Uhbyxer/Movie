@@ -61,6 +61,13 @@ public class TicketServiceImpl implements TicketService {
 	@Override
 	public void calculatePrice(Ticket ticket) {
 		
+		ticket.setPrice(0.0);
+		ticket.setPriceBase(0.0);
+		ticket.setPriceWithRaiting(0.0);
+		ticket.setPriceWithVip(0.0);
+		ticket.setDiscountStrategy(null);
+		
+		
 		if(ticket.getEvent() == null) return;
 		
 		double price = ticket.getEvent().getPrice();

@@ -25,7 +25,7 @@ public class Event extends NamedBean {
 
 	@Override
 	public String toString() {
-		return name + " < R: " + rating + " $ " + price + " >";
+		return name + " < Raiting: " + rating + "; Base price: $" + price + " >";
 	}
 
 		
