@@ -1,7 +1,21 @@
 package com.epam.spring.movie.service;
 
-import com.epam.spring.movie.dao.EventDao;
+import java.util.List;
 
-public interface EventService extends EventDao {
+import com.epam.spring.movie.bean.Event;
+
+
+public interface EventService {
 	
-}
+	public void create(Event event);
+
+	public void remove(Event event);
+
+	public List<Event> getAll();
+	
+	public Event getById(Integer id);
+
+	public List<Event> getListByName(String name);
+	
+	public Event getByName(String name);
+}	

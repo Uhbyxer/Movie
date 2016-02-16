@@ -1,7 +1,20 @@
 package com.epam.spring.movie.service;
 
-import com.epam.spring.movie.dao.AuditoriumDao;
+import java.util.List;
 
-public interface AuditoriumService extends AuditoriumDao{
-	
+import com.epam.spring.movie.bean.Auditorium;
+
+
+public interface AuditoriumService {
+
+	public void create(Auditorium auditorium);
+
+	public void remove(Auditorium auditorium);
+
+	public List<Auditorium> getAll();
+		
+	public Auditorium getById(Integer id);
+
+	public List<Auditorium> getListByName(String name);
+
 }
