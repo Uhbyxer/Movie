@@ -63,7 +63,7 @@ public class UserDiscountCounterServiceTest extends AbstractTestCase {
 		System.out.println("Discount: " + discountStrategy.getName());
 		UserDiscountCounter userDiscountCounter = userDiscountCounterService.getByUserAndDiscount(user, discountStrategy);
 		System.out.println("count = " +  userDiscountCounter.getCount());
-		//assertEquals(4, userDiscountCounter.getCount());
+		assertEquals(3, userDiscountCounter.getCount());
 	}
 	
 	@Test
@@ -75,7 +75,7 @@ public class UserDiscountCounterServiceTest extends AbstractTestCase {
 		System.out.println("Discount: " + discountStrategy.getName());
 		UserDiscountCounter userDiscountCounter = userDiscountCounterService.getByUserAndDiscount(user, discountStrategy);
 		System.out.println("count = " +  userDiscountCounter.getCount());
-		//assertEquals(4, userDiscountCounter.getCount());
+		assertEquals(1, userDiscountCounter.getCount());
 	}
 
 
@@ -87,7 +87,7 @@ public class UserDiscountCounterServiceTest extends AbstractTestCase {
 		int count = userDiscountCounterService.getTotalCountByDiscount(discountStrategy);
 		System.out.println(count);
 		
-		assertTrue(count > 0);
+		assertEquals(3, count);
 		
 	}
 
