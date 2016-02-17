@@ -1,11 +1,19 @@
-package com.epam.spring.movie.dao;
+package com.epam.spring.movie.service;
 
-
+import java.util.List;
 
 import com.epam.spring.movie.bean.Event;
 import com.epam.spring.movie.bean.EventCounter;
 
-public interface EventCounterDao extends BaseDao<EventCounter>{
+public interface EventCounterService {
+	
+	public void create(EventCounter eventCounter);
+
+	public void remove(EventCounter eventCounter);
+
+	public List<EventCounter> getAll();
+	
+	public EventCounter getById(Integer id);
 	
 	public EventCounter getByEvent(Event event);
 	

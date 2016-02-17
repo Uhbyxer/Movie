@@ -4,11 +4,11 @@ public class EventCounter extends BaseBean {
 	
 	private Event event;
 	
-	private Integer byNameCount;
+	private int byNameCount;
 	
-	private Integer priceCount;
+	private int priceCount;
 	
-	private Integer bookCount;
+	private int bookCount;
 
 	public Event getEvent() {
 		return event;
@@ -18,27 +18,27 @@ public class EventCounter extends BaseBean {
 		this.event = event;
 	}
 
-	public Integer getByNameCount() {
+	public int getByNameCount() {
 		return byNameCount;
 	}
 
-	public void setByNameCount(Integer byNameCount) {
+	public void setByNameCount(int byNameCount) {
 		this.byNameCount = byNameCount;
 	}
 
-	public Integer getPriceCount() {
+	public int getPriceCount() {
 		return priceCount;
 	}
 
-	public void setPriceCount(Integer priceCount) {
+	public void setPriceCount(int priceCount) {
 		this.priceCount = priceCount;
 	}
 
-	public Integer getBookCount() {
+	public int getBookCount() {
 		return bookCount;
 	}
 
-	public void setBookCount(Integer bookCount) {
+	public void setBookCount(int bookCount) {
 		this.bookCount = bookCount;
 	}
 

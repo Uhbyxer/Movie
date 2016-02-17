@@ -17,6 +17,9 @@ public class BaseDaoStub <T extends BaseBean> implements BaseDao<T> {
 	}
 	
 	public void create(T  bean) {
+		if(bean.getId() == null) {
+			bean.setId(getMaxid() + 1);
+		}
 		holder.putIfAbsent(bean.getId(), bean);	
 	}
 
@@ -37,5 +40,12 @@ public class BaseDaoStub <T extends BaseBean> implements BaseDao<T> {
 	@Override
 	public T getById(Integer id) {
 		return holder.get(id);
+	}
+	
+	public int getMaxid() {
+		return holder.keySet()
+				.stream()
+				.max(Integer::compareTo)
+				.orElse(-1);
 	}
 }
