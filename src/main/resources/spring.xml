@@ -410,6 +410,9 @@
 	<bean id = "eventCounterDaoStub" class="com.epam.spring.movie.dao.stub.EventCounterDaoStub">
 	</bean>
 	
+	<bean id = "userDiscountCounterDaoStub" class="com.epam.spring.movie.dao.stub.UserDiscountCounterDaoStub">
+	</bean>
+		
 	<bean id = "userServiceImpl" class="com.epam.spring.movie.service.impl.UserServiceImpl">
 		<property name="userDao" ref="userDaoStub" />
 	</bean>
@@ -434,7 +437,12 @@
 	<bean id = "eventCounterServiceImpl" class="com.epam.spring.movie.service.impl.EventCounterServiceImpl">
 		<property name="eventCounterDao" ref="eventCounterDaoStub" />
 	</bean>	
-			
+	
+	<bean id = "userDiscountCounterServiceImpl" class="com.epam.spring.movie.service.impl.UserDiscountCounterServiceImpl">
+		<property name="userDiscountCounterDao" ref="userDiscountCounterDaoStub" />
+	</bean>	
+	
+				
 	<import resource="discounts.xml"/>
 
 	<bean id="app" class="com.epam.spring.movie.App">

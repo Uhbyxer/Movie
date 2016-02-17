@@ -2,8 +2,6 @@ package com.epam.spring.movie.aspect;
 
 import static org.junit.Assert.*;
 
-import java.util.Map;
-
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;

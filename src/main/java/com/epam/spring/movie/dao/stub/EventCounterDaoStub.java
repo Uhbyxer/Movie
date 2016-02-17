@@ -25,8 +25,6 @@ public class EventCounterDaoStub extends BaseDaoStub<EventCounter> implements Ev
 	}
 	
 	public EventCounter getByEventOrCreate(Event event) {
-		@SuppressWarnings("unused")
-		Integer temp = event.getId();
 		
 		EventCounter eventCounter = getByEvent(event);
 		if(eventCounter == null) {

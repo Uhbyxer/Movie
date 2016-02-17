@@ -16,6 +16,7 @@ public class BaseDaoStub <T extends BaseBean> implements BaseDao<T> {
 		this.holder = holder;
 	}
 	
+	@Override
 	public void create(T  bean) {
 		if(bean.getId() == null) {
 			bean.setId(getMaxid() + 1);

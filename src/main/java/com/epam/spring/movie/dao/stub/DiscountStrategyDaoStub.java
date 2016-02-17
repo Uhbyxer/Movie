@@ -7,6 +7,5 @@ import com.epam.spring.movie.dao.DiscountStrategyDao;
 
 
 public class DiscountStrategyDaoStub extends BaseNamedDaoStub<DiscountStrategy>  implements DiscountStrategyDao {
-
-
+	
 }
