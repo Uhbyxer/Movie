@@ -20,8 +20,10 @@ public abstract class BaseBean {
 		if (this == other)
 			return true;
 		
-		if(other.getClass() == getClass())
+		
+		if(other.getClass() == getClass()) {
 			return id.equals(((BaseBean) other).id);
+		}
 		
 		return false;
 	}

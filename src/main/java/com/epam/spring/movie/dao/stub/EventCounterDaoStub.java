@@ -14,7 +14,8 @@ public class EventCounterDaoStub extends BaseDaoStub<EventCounter> implements Ev
 		
 		EventCounter res = holder.entrySet()
 				.stream()
-				.filter(p -> event.equals(p.getValue().getEvent()))
+				.filter(p -> event.getId().equals(p.getValue().getEvent().getId()))
+				//.filter(p -> event.equals(p.getValue().getEvent()))
 				.map(p -> p.getValue())
 				.findFirst()
 				.orElse(null);
@@ -24,6 +25,9 @@ public class EventCounterDaoStub extends BaseDaoStub<EventCounter> implements Ev
 	}
 	
 	public EventCounter getByEventOrCreate(Event event) {
+		@SuppressWarnings("unused")
+		Integer temp = event.getId();
+		
 		EventCounter eventCounter = getByEvent(event);
 		if(eventCounter == null) {
 			eventCounter = new EventCounter();
