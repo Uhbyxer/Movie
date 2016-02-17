@@ -2,7 +2,7 @@ package com.epam.spring.movie.dao;
 
 import com.epam.spring.movie.bean.DiscountStrategy;
 
-import com.epam.spring.movie.bean.EventCounter;
+
 import com.epam.spring.movie.bean.User;
 import com.epam.spring.movie.bean.UserDiscountCounter;
 

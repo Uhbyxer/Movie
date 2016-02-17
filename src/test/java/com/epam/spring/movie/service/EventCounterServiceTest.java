@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.epam.spring.movie.AbstractTestCase;
 import com.epam.spring.movie.bean.Event;
+import com.epam.spring.movie.bean.EventCounter;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class EventCounterServiceTest extends AbstractTestCase {
@@ -74,5 +75,32 @@ public class EventCounterServiceTest extends AbstractTestCase {
 		System.out.println(eventCounterService.incrementAndGetBookCount(event));
 		assertEquals(count + 3, eventCounterService.incrementAndGetBookCount(event));
 	}
+	
+	@Test
+	public void testGetByNameCounter() {
+		EventCounter eventCounter = eventCounterService.getAll().get(0);
+		System.out.println("Testing by name counter for event: " + eventCounter.getEvent().getName());
+		
+		
+		System.out.println(eventCounter.getByNameCount());
+		assertEquals(1, eventCounter.getByNameCount());
+	}
 
+	@Test
+	public void testGetPriceCounter() {
+		EventCounter eventCounter = eventCounterService.getAll().get(1);
+		System.out.println("Testing price counter for event: " + eventCounter.getEvent().getName());
+		
+		System.out.println(eventCounter.getPriceCount());
+		assertEquals(4, eventCounter.getPriceCount());
+	}
+
+	@Test
+	public void testBookCounter() {
+		EventCounter eventCounter = eventCounterService.getAll().get(1);
+		System.out.println("Testing book counter for event: " + eventCounter.getEvent().getName());
+		
+		System.out.println(eventCounter.getBookCount());
+		assertEquals(1, eventCounter.getBookCount());
+	}
 }

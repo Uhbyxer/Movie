@@ -5,12 +5,12 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.epam.spring.movie.AbstractTestCase;
-
 import com.epam.spring.movie.bean.EventCounter;
 import com.epam.spring.movie.service.EventCounterService;
 import com.epam.spring.movie.service.EventService;
@@ -39,6 +39,7 @@ public class CounterAspectTest extends AbstractTestCase {
 		System.out.println("\nTest # " + ++testCounter);
 	}
 
+	@Ignore
 	@Test
 	public void testGetByNameCounter() {
 		EventCounter eventCounter = eventCounterService.getAll().get(0);
@@ -49,6 +50,7 @@ public class CounterAspectTest extends AbstractTestCase {
 		assertEquals(1, eventCounter.getByNameCount());
 	}
 
+	@Ignore
 	@Test
 	public void testGetPriceCounter() {
 		EventCounter eventCounter = eventCounterService.getAll().get(1);
@@ -58,6 +60,7 @@ public class CounterAspectTest extends AbstractTestCase {
 		assertEquals(4, eventCounter.getPriceCount());
 	}
 
+	@Ignore
 	@Test
 	public void testBookCounter() {
 		EventCounter eventCounter = eventCounterService.getAll().get(1);
