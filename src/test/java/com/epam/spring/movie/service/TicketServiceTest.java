@@ -74,6 +74,7 @@ public class TicketServiceTest extends AbstractTestCase {
 		System.out.println("Try to book ticket: " + newTicketFirst);
 		
 		ticketService.bookTicket(newTicketFirst);
+		System.out.println("Ticket price: " + newTicketFirst.getBillDetails());
 		
 		assertEquals(before + 1, ticketService.getAll().size());
 }

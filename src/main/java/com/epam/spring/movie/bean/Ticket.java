@@ -174,5 +174,13 @@ public class Ticket extends BaseBean implements Cloneable{
 		
 		return res.toString();
 	}
+	
+	public void clearPricesAndDiscount() {
+		setPrice(0.0);
+		setPriceBase(0.0);
+		setPriceWithRaiting(0.0);
+		setPriceWithVip(0.0);
+		setDiscountStrategy(null);
+	}
 
 }

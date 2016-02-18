@@ -1,9 +1,15 @@
 package com.epam.spring.movie.aspect;
 
+import java.util.Random;
+
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import com.epam.spring.movie.bean.Ticket;
 
 import com.epam.spring.movie.service.TicketService;
 
@@ -22,7 +28,27 @@ public class LuckyTicketAspect {
 	private void bookTicket() {}
 	
 	
-	//@Around("bookTicket() && args(user,ticket)")
 	
+	
+	@Around("bookTicket() && args(ticket)")
+	public void aroundBookTicket(ProceedingJoinPoint point, Object ticket) throws Throwable {
+		
+		if(new Random().nextInt(100) > 25){
+			
+			Ticket luckyTicket = (Ticket) ticket;
+
+			if(!ticketService.isBooked(luckyTicket.getDateTime(), luckyTicket.getAuditorium(), luckyTicket.getSeat())) {
+				
+				luckyTicket.clearPricesAndDiscount();
+				ticketService.create(luckyTicket);
+				
+				System.err.println("$$$$$$$$$$$$$$$$$$$$$$ ASPECT GET LUCKY : " +  luckyTicket);
+				
+				return;
+				
+			}			
+		}
+		point.proceed();
+	}
 	
 }

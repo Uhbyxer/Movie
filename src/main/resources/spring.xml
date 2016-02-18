@@ -442,6 +442,7 @@
 		<property name="userDiscountCounterDao" ref="userDiscountCounterDaoStub" />
 	</bean>	
 	
+	
 				
 	<import resource="discounts.xml"/>
 
@@ -459,7 +460,9 @@
 	
 	
 	<context:annotation-config/>
-	<context:component-scan base-package="com.epam.*"/>
+	<context:component-scan base-package="com.epam.*">
+	</context:component-scan>
+	
 	<aop:aspectj-autoproxy proxy-target-class="true"/>
 
 </beans>

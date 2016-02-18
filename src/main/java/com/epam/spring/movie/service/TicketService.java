@@ -30,5 +30,6 @@ public interface TicketService {
 	public List<Ticket> getTicketsForUser(User user);
 	
 	public void bookTicket(Ticket ticket);
+	
 		
 }
