@@ -23,14 +23,19 @@
  		">
 
 
-
-
 	<bean id = "userDaoImpl" class="com.epam.spring.movie.dao.impl.UserDaoImpl" />
 	
 	<bean id = "userServiceImpl" class="com.epam.spring.movie.service.impl.UserServiceImpl">
 		<property name="userDao" ref="userDaoImpl" />
 	</bean>	
+	
+	<bean id = "eventDaoImpl" class="com.epam.spring.movie.dao.impl.EventDaoImpl" />
+	
+	<bean id = "eventServiceImpl" class="com.epam.spring.movie.service.impl.EventServiceImpl">
+		<property name="eventDao" ref="eventDaoImpl" />
+	</bean>	
 
+		
 	<bean id="dateFormat" class="java.text.SimpleDateFormat" scope="prototype">
 		<constructor-arg value="yyyy-MM-dd" />
 	</bean>
@@ -426,9 +431,7 @@
 	</bean>
 		
 
-	<bean id = "eventServiceImpl" class="com.epam.spring.movie.service.impl.EventServiceImpl">
-		<property name="eventDao" ref="eventDaoStub" />
-	</bean>
+
 	
 	<bean id = "auditoriumServiceImpl" class="com.epam.spring.movie.service.impl.AuditoriumServiceImpl">
 		<property name="auditoriumDao" ref="auditoriumDaoStub" />
@@ -487,5 +490,6 @@
 	<jdbc:embedded-database id="dataSource" type="H2">
 		<jdbc:script location="classpath:/database/create-database.sql" />
 		<jdbc:script location="classpath:/database/insert-user.sql" />
+		<jdbc:script location="classpath:/database/insert-event.sql" />
 	</jdbc:embedded-database>
 </beans>
