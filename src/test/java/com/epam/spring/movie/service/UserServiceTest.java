@@ -2,10 +2,13 @@ package com.epam.spring.movie.service;
 
 import static org.junit.Assert.*;
 
+import java.time.LocalDate;
 import java.util.List;
+
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
+
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +40,7 @@ public class UserServiceTest extends AbstractTestCase{
 		System.out.println("\nTest # " + ++testCounter);
 	}
 	
+	
 	@Test
 	public void testCreate() {
 		String email = EMAIL;
@@ -44,13 +48,16 @@ public class UserServiceTest extends AbstractTestCase{
 		user.setId(100);
 		user.setEmail(email);
 		user.setName("test user");
+		user.setBirth(LocalDate.now().withYear(1985));
 		System.out.println("Creating new user: " + user);
 		userService.create(user);
 		
 		user = userService.getUserByEmail(email);
+		System.out.println("New user: " + user);
 		assertNotNull(user);
 	}
 
+	
 	@Test
 	public void testRemove() {
 		User user = userService.getUserByEmail(EMAIL);
@@ -61,6 +68,7 @@ public class UserServiceTest extends AbstractTestCase{
 		assertNull(user);
 	}
 
+	
 	@Test
 	public void testGetAll() {
 		System.out.println("All users:");
@@ -69,6 +77,7 @@ public class UserServiceTest extends AbstractTestCase{
 		//assertEquals(users.size(), 4);
 	}
 
+	
 	@Test
 	public void testGetById() {
 		User user = userService.getById(1);
@@ -76,6 +85,7 @@ public class UserServiceTest extends AbstractTestCase{
 		assertEquals(user.getId(), Integer.valueOf(1));
 	}
 
+	
 	@Test
 	public void testGetListByName() {
 		System.out.println("By name = john doe :");
@@ -86,12 +96,13 @@ public class UserServiceTest extends AbstractTestCase{
 		}
 	}
 
+	
 	@Test
 	public void testUserByEmail() {
 		System.out.println("User by email (bruce_willis@gmail.com) : ");
 		User user = userService.getUserByEmail("bruce_willis@gmail.com");
 		System.out.println(user);
-		assertEquals(user.getEmail().toLowerCase(), "bruce_willis@gmail.com");
+		assertEquals(user.getEmail().toLowerCase().trim(), "bruce_willis@gmail.com");
 	}
 	
 
