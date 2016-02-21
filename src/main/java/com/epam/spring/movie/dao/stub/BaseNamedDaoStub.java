@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 import com.epam.spring.movie.bean.NamedBean;
 import com.epam.spring.movie.dao.HasNameDao;
 
-public class BaseNamedDaoStub<T extends NamedBean> extends BaseDaoStub<T> implements HasNameDao<T> {
+public class BaseNamedDaoStub <T extends NamedBean> extends BaseDaoStub<T> implements HasNameDao<T> {
 
 	@Override
 	public List<T> getListByName(String name) {

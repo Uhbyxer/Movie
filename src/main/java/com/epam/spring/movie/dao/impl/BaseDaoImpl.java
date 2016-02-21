@@ -77,6 +77,6 @@ public abstract class BaseDaoImpl <T extends BaseBean> implements BaseDao<T> {
 	
 	public abstract void create(T t);
 	
-	public abstract T getBeanFromResultSet(ResultSet rs) throws SQLException;
+	protected abstract T getBeanFromResultSet(ResultSet rs) throws SQLException;
 	
 }

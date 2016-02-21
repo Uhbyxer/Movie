@@ -46,7 +46,7 @@ public class AssignmentDaoImpl extends BaseDaoImpl<Assignment> implements Assign
 	}
 	
 	@Override
-	public Assignment getBeanFromResultSet(ResultSet rs) throws SQLException {
+	protected Assignment getBeanFromResultSet(ResultSet rs) throws SQLException {
 		Assignment assignment = new Assignment();
 		assignment.setId(rs.getInt("id"));
 		assignment.setEvent(eventDao.getById(rs.getInt("event_id"))); 
