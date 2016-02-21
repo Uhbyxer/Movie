@@ -22,3 +22,19 @@ create table assignment (
   primary key (id)
 );
 
+create table ticket (
+  id int not null auto_increment,
+  event_id int,
+  auditorium_id int,
+  user_id int,
+  strategy_id int,
+  seat int,
+  ticket_datetime datetime,
+  price_base double,
+  price_rait double,
+  price_vip double,
+  discount double,
+  price double,
+  primary key (id)
+);
+

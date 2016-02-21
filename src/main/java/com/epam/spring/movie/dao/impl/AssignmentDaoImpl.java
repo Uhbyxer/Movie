@@ -18,7 +18,6 @@ public class AssignmentDaoImpl extends BaseDaoImpl<Assignment> implements Assign
 	
 
 	private EventDao eventDao;
-	
 	private AuditoriumDao auditoriumDao;
 	
 	public void setEventDao(EventDao eventDao) {

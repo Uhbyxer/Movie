@@ -42,7 +42,21 @@
 	
 	<bean id = "assignmentServiceImpl" class="com.epam.spring.movie.service.impl.AssignmentServiceImpl">
 		<property name="assignmentDao" ref="assignmentDaoImpl" />
+	</bean>
+	
+	<bean id = "discountStrategyDaoStub" class="com.epam.spring.movie.service.stub.DiscountStrategyDaoStub">
+	</bean>
+	
+	<bean id = "ticketDaoImpl" class="com.epam.spring.movie.dao.impl.TicketDaoImpl" >
+		<property name="eventDao" ref="eventDaoImpl" />
+		<property name="userDao" ref="userDaoImpl" />
+		<property name="auditoriumDao" ref="auditoriumDaoStub" />
+		<property name="discountStrategyDao" ref="discountStrategyDaoStub" />
+	</bean>
+	<bean id = "ticketServiceImpl" class="com.epam.spring.movie.service.impl.TicketServiceImpl">
+		<property name="ticketDao" ref="ticketDaoImpl" />
 	</bean>	
+		
 		
 	<bean id="dateFormat" class="java.text.SimpleDateFormat" scope="prototype">
 		<constructor-arg value="yyyy-MM-dd" />
@@ -445,11 +459,6 @@
 		<property name="auditoriumDao" ref="auditoriumDaoStub" />
 	</bean>		
 	
-	<bean id = "ticketServiceImpl" class="com.epam.spring.movie.service.impl.TicketServiceImpl">
-		<property name="ticketDao" ref="ticketDaoStub" />
-		<property name="discountStrategyService" ref="discountStrategyServiceImpl"/>
-	</bean>	
-	
 	<bean id = "eventCounterServiceImpl" class="com.epam.spring.movie.service.impl.EventCounterServiceImpl">
 		<property name="eventCounterDao" ref="eventCounterDaoStub" />
 	</bean>	
@@ -496,5 +505,6 @@
 		<jdbc:script location="classpath:/database/insert-user.sql" />
 		<jdbc:script location="classpath:/database/insert-event.sql" />
 		<jdbc:script location="classpath:/database/insert-assignment.sql" />
+		<jdbc:script location="classpath:/database/insert-ticket.sql" />
 	</jdbc:embedded-database>
 </beans>

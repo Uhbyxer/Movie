@@ -30,7 +30,7 @@ public class DiscountAspect {
 		
 		if(ticket != null && ticket.getUser() != null && discount != null)
 			userDiscountCounterService.incrementAndGetCount(ticket.getUser(), (DiscountStrategy) discount);
-		
+
 	}
 	
 	
