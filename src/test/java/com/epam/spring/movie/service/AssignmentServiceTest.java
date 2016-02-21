@@ -7,10 +7,10 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
+
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 
 import com.epam.spring.movie.AbstractTestCase;
 import com.epam.spring.movie.bean.Assignment;
@@ -23,19 +23,10 @@ public class AssignmentServiceTest extends AbstractTestCase {
 	private AssignmentService assignmentService;
 	
 	
-	@Autowired
-	@Qualifier("new_assign_4")
-	private Assignment newAssignment;
-
-	
 	public void setAssignmentService(AssignmentService assignmentService) {
 		this.assignmentService = assignmentService;
 	}
 	
-	public void setNewAssignment(Assignment newAssignment) {
-		this.newAssignment = newAssignment;
-	}
-
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -47,22 +38,33 @@ public class AssignmentServiceTest extends AbstractTestCase {
 		System.out.println("\nTest # " + ++testCounter);
 	}
 
+	
 	@Test
 	public void testIsAssigned() {
-		System.out.println("Is assigned: " + newAssignment);
-		assertTrue(assignmentService.isAssigned(newAssignment.getAuditorium(), newAssignment.getDateTime()));
+		Assignment assignment = assignmentService.getById(0);
+		System.out.println("Is assigned: " + assignment);
+		assertTrue(assignmentService.isAssigned(assignment.getAuditorium(), assignment.getDateTime()));
 	}
 
+	
 	@Test
 	public void testCreate() {
+		Assignment newAssignment = assignmentService.getById(0);
+		newAssignment.setHour(11);
+		
 		System.out.println("Assign auditorium for event: ");
 		System.out.println(newAssignment);
 		assignmentService.create(newAssignment);
 		Assignment assignment = assignmentService.getById(newAssignment.getId());
-		assertNotNull(assignment);	}
+		assertNotNull(assignment);	
+	}
+
 
 	@Test
 	public void testRemove() {
+		List<Assignment> list = assignmentService.getAll();
+		Assignment newAssignment = list.get(list.size() - 1);
+		
 		System.out.println("Removing assigment" + newAssignment);
 		assignmentService.remove(newAssignment);
 		Assignment assignment = assignmentService.getById(newAssignment.getId());
@@ -77,10 +79,12 @@ public class AssignmentServiceTest extends AbstractTestCase {
 		assertTrue(assignments.size() > 0);
 	}
 
+
 	@Test
 	public void testGetById() {
-		System.out.println("Get by id = " + newAssignment.getId());
-		Assignment assignment = assignmentService.getById(newAssignment.getId());
+		System.out.println("Get by id = 2");
+		Assignment assignment = assignmentService.getById(2);
+		System.out.println(assignment);
 		assertNotNull(assignment);
 	}
 

@@ -49,7 +49,8 @@ public class Assignment extends BaseBean {
 	
 	@Override
 	public String toString() {
-		return auditorium.getName() + "[ " + event.getName() + "] on " + dateTime;
+		return (auditorium == null ? "null" : auditorium.getName())
+				+ "[" +  (event == null ? "null" : event.getName())  + "] on " + dateTime;
 	}
 	
 }

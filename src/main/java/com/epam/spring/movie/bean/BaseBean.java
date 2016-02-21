@@ -2,7 +2,7 @@ package com.epam.spring.movie.bean;
 
 public abstract class BaseBean {
 	
-	private Integer id;
+	protected Integer id;
 	
 	public Integer getId() {
 		return id;
