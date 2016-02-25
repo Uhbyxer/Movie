@@ -61,7 +61,7 @@ public class TicketDaoImpl extends BaseDaoImpl<Ticket> implements TicketDao {
 				ticket.getEvent().getId(),
 				ticket.getAuditorium().getId(),
 				(ticket.getUser() == null ? null : ticket.getUser().getId()),
-				ticket.getDiscountStrategy().getId(),
+				(ticket.getDiscountStrategy() == null ? null : ticket.getDiscountStrategy().getId()),
 				ticket.getSeat(),
 				java.util.Date.from(ticket.getDateTime().atZone(ZoneId.systemDefault()).toInstant()),
 				ticket.getPriceBase(),

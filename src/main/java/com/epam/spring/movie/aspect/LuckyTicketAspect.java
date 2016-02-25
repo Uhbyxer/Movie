@@ -36,12 +36,12 @@ public class LuckyTicketAspect {
 		if(new Random().nextInt(100) > 25){
 			
 			Ticket luckyTicket = (Ticket) ticket;
-
+	
 			if(!ticketService.isBooked(luckyTicket.getDateTime(), luckyTicket.getAuditorium(), luckyTicket.getSeat())) {
 				
 				luckyTicket.clearPricesAndDiscount();
 				ticketService.create(luckyTicket);
-				
+
 				System.err.println("$$$$$$$$$$$$$$$$$$$$$$ ASPECT GET LUCKY : " +  luckyTicket);
 				
 				return;

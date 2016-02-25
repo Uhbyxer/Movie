@@ -82,23 +82,8 @@ public class TicketServiceImpl implements TicketService {
 		}
 		ticket.setPriceWithVip(price);
 		
-		try {
-			
-		
 		if(ticket.getUser() != null)
-			
-			System.out.println(discountStrategyService);
-			System.out.println(ticket);
-			System.out.println(ticket.getUser());
-			
 			discountStrategyService.getBestDiscountStrategy(ticket, getCountOfTicketsForUser(ticket.getUser()));
-		
-		} catch (Exception e) {
-			System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!EROR");
-			e.printStackTrace();
-		}
-				
-				
 				
 		DiscountStrategy discountStrategy = ticket.getDiscountStrategy();
 		if(discountStrategy != null) {

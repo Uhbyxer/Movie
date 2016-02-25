@@ -55,6 +55,7 @@
 	</bean>
 	<bean id = "ticketServiceImpl" class="com.epam.spring.movie.service.impl.TicketServiceImpl">
 		<property name="ticketDao" ref="ticketDaoImpl" />
+		<property name="discountStrategyService" ref="discountStrategyServiceImpl" />
 	</bean>	
 		
 		
