@@ -5,12 +5,12 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.epam.spring.movie.AbstractTestCase;
-
 import com.epam.spring.movie.bean.EventCounter;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
@@ -23,6 +23,7 @@ public class EventCounterServiceTest extends AbstractTestCase {
 	
 	@Autowired
 	private EventService eventService;
+	
 	
 	public void setEventService(EventService eventService) {
 		this.eventService = eventService;
@@ -42,6 +43,8 @@ public class EventCounterServiceTest extends AbstractTestCase {
 		System.out.println("\nTest # " + ++testCounter);
 	}
 	
+	
+	
 	@Test
 	public void testGetByNameCounter() {
 		EventCounter eventCounter = eventCounterService.getAll().get(0);
@@ -52,6 +55,8 @@ public class EventCounterServiceTest extends AbstractTestCase {
 		assertEquals(1, eventCounter.getByNameCount());
 	}
 
+
+	
 	@Test
 	public void testGetPriceCounter() {
 		EventCounter eventCounter = eventCounterService.getAll().get(1);
@@ -61,8 +66,27 @@ public class EventCounterServiceTest extends AbstractTestCase {
 		assertEquals(4, eventCounter.getPriceCount());
 	}
 
+	
+	@Ignore
 	@Test
-	public void testBookCounter() {
+	public void testCreateCounter() {
+		
+		EventCounter eventCounter = new EventCounter();
+		eventCounter.setEvent(eventService.getById(0));
+		eventCounter.setByNameCount(10);
+		eventCounter.setBookCount(28);
+		
+		eventCounterService.create(eventCounter);
+		
+	}
+
+	
+	@Test
+	public void testTryBookCounter() {
+		System.out.println("SIZE:");
+		System.out.println(eventCounterService.getAll());
+		
+		
 		EventCounter eventCounter = eventCounterService.getAll().get(1);
 		System.out.println("Testing book counter for event: " + eventCounter.getEvent().getName());
 		

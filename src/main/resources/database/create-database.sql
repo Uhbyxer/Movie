@@ -38,3 +38,12 @@ create table ticket (
   primary key (id)
 );
 
+create table event_counter (
+  id int not null auto_increment,
+  event_id int,
+  by_name_count int,
+  price_count int,
+  book_count int,
+  primary key (id)
+);
+

@@ -33,8 +33,7 @@ public class EventDaoImpl extends BaseNamedDaoImpl<Event> implements EventDao {
 		);
 		
 	}
-
-
+	
 	@Override
 	public Event getByName(String name) {
 		try {

@@ -447,7 +447,8 @@
 		</property>
 	</bean>	
 	
-	<bean id = "eventCounterDaoStub" class="com.epam.spring.movie.dao.stub.EventCounterDaoStub">
+	<bean id = "eventCounterDaoImpl" class="com.epam.spring.movie.dao.impl.EventCounterDaoImpl">
+		<property name="eventDao" ref="eventDaoImpl" />
 	</bean>
 	
 	<bean id = "userDiscountCounterDaoStub" class="com.epam.spring.movie.dao.stub.UserDiscountCounterDaoStub">
@@ -461,7 +462,7 @@
 	</bean>		
 	
 	<bean id = "eventCounterServiceImpl" class="com.epam.spring.movie.service.impl.EventCounterServiceImpl">
-		<property name="eventCounterDao" ref="eventCounterDaoStub" />
+		<property name="eventCounterDao" ref="eventCounterDaoImpl" />
 	</bean>	
 	
 	<bean id = "userDiscountCounterServiceImpl" class="com.epam.spring.movie.service.impl.UserDiscountCounterServiceImpl">

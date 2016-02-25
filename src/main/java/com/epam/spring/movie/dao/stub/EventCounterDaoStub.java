@@ -1,7 +1,6 @@
 package com.epam.spring.movie.dao.stub;
 
 import java.util.HashMap;
-
 import com.epam.spring.movie.bean.Event;
 import com.epam.spring.movie.bean.EventCounter;
 import com.epam.spring.movie.dao.EventCounterDao;
