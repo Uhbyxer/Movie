@@ -55,4 +55,9 @@ public class EventCounterServiceImpl implements EventCounterService {
 		return eventCounterDao.incrementAndGetBookCount(event);
 	}
 
+	@Override
+	public void update(EventCounter eventCounter) {
+		eventCounterDao.update(eventCounter);
+	}
+
 }

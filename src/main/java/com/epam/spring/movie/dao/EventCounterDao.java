@@ -14,5 +14,7 @@ public interface EventCounterDao extends BaseDao<EventCounter>{
 	public int incrementAndGetPriceCount(Event event);
 
 	public int incrementAndGetBookCount(Event event);
+	
+	public void update(EventCounter eventCounter);
 
 }

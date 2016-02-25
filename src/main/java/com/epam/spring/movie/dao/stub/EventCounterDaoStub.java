@@ -58,5 +58,10 @@ public class EventCounterDaoStub extends BaseDaoStub<EventCounter> implements Ev
 	public EventCounterDaoStub() {
 		holder = new HashMap<>();
 	}
+
+	@Override
+	public void update(EventCounter eventCounter) {
+		// TODO Auto-generated method stub
+	}
 	
 }

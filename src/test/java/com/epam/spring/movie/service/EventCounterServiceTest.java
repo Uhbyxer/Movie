@@ -45,18 +45,18 @@ public class EventCounterServiceTest extends AbstractTestCase {
 	
 	
 	
+	//@Ignore
 	@Test
 	public void testGetByNameCounter() {
 		EventCounter eventCounter = eventCounterService.getAll().get(0);
 		System.out.println("Testing by name counter for event: " + eventCounter.getEvent().getName());
-		
 		
 		System.out.println(eventCounter.getByNameCount());
 		assertEquals(1, eventCounter.getByNameCount());
 	}
 
 
-	
+	//@Ignore
 	@Test
 	public void testGetPriceCounter() {
 		EventCounter eventCounter = eventCounterService.getAll().get(1);
@@ -69,22 +69,50 @@ public class EventCounterServiceTest extends AbstractTestCase {
 	
 	@Ignore
 	@Test
-	public void testCreateCounter() {
+	public void testCreateAndIncrementBookCountOne() {
 		
 		EventCounter eventCounter = new EventCounter();
-		eventCounter.setEvent(eventService.getById(0));
+		eventCounter.setEvent(eventService.getById(1));
 		eventCounter.setByNameCount(10);
 		eventCounter.setBookCount(28);
 		
 		eventCounterService.create(eventCounter);
 		
 	}
+	
+	@Ignore
+	@Test
+	public void testCreateAndIncrementBookCountTwo() {
+		
+		System.out.println("All : " + eventCounterService.getAll());
+		
+		System.out.println(eventCounterService.getAll().get(0).getEvent());
+		System.out.println(eventCounterService.getAll().get(0).getEvent().getId());
+		
+		
+		EventCounter eventCounter = eventCounterService.getByEvent(eventService.getById(1));
+		System.out.println(eventCounter);	
+		
+		
+		
+		eventCounterService.incrementAndGetByNameCount(eventService.getById(1));
+		eventCounterService.incrementAndGetByNameCount(eventService.getById(1));
+		eventCounterService.incrementAndGetByNameCount(eventService.getById(1));
+		eventCounterService.incrementAndGetByNameCount(eventService.getById(1));
+		
+		eventCounter = eventCounterService.getByEvent(eventService.getById(1));
+		System.out.println(eventCounter);
+		
+		//eventCounterService.create(eventCounter);
+		
+	}
 
 	
+	//@Ignore
 	@Test
 	public void testTryBookCounter() {
-		System.out.println("SIZE:");
-		System.out.println(eventCounterService.getAll());
+//		System.out.println("SIZE:");
+//		System.out.println(eventCounterService.getAll());
 		
 		
 		EventCounter eventCounter = eventCounterService.getAll().get(1);
@@ -92,5 +120,12 @@ public class EventCounterServiceTest extends AbstractTestCase {
 		
 		System.out.println(eventCounter.getBookCount());
 		assertEquals(1, eventCounter.getBookCount());
+	}
+	
+	//@Ignore
+	@Test
+	public void testZeEnd() {
+		System.out.println("The end test");
+		System.out.println(eventCounterService.getAll());
 	}
 }
