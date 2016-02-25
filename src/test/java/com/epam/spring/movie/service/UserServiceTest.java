@@ -25,6 +25,9 @@ public class UserServiceTest extends AbstractTestCase{
 	
 	@Autowired
 	private UserService userService;
+
+	@Autowired
+	private EventService eventService;
 	
 	public void setUserService(UserService userService) {
 		this.userService = userService;

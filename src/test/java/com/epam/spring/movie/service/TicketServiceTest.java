@@ -2,19 +2,16 @@ package com.epam.spring.movie.service;
 
 import static org.junit.Assert.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-
 import com.epam.spring.movie.AbstractTestCase;
-import com.epam.spring.movie.bean.Event;
 import com.epam.spring.movie.bean.Ticket;
 import com.epam.spring.movie.bean.User;
 
@@ -22,24 +19,22 @@ import com.epam.spring.movie.bean.User;
 public class TicketServiceTest extends AbstractTestCase {
 	public static int testCounter = 0;
 
-	@Autowired
-	@Qualifier("new_ticket_7")
-	private Ticket newTicketFirst;
 
+	@Autowired
+	private AuditoriumService auditoriumService; 
+	
+	@Autowired
+	private EventService eventService;
+	
 	@Autowired
 	private TicketService ticketService;
 
 	@Autowired
-	@Qualifier("user_0")
-	private User userFirst;
-
-	@Autowired
-	@Qualifier("user_0")
-	private User userSecond;
-
-	@Autowired
-	@Qualifier("event_0")
-	private Event event;
+	private UserService userService;
+	
+	public void setUserService(UserService userService) {
+		this.userService = userService;
+	}
 
 	public void setTicketService(TicketService ticketService) {
 		this.ticketService = ticketService;
@@ -49,10 +44,19 @@ public class TicketServiceTest extends AbstractTestCase {
 	public static void setUpBeforeClass() throws Exception {
 		System.out.println("\n*********************************************** Ticket Tests --->");
 	}
+	
+	private Ticket newTicketFirst;
 
 	@Before
 	public void setUp() throws Exception {
 		System.out.println("\nTest # " + ++testCounter);
+		
+		newTicketFirst = new Ticket();
+		newTicketFirst.setAuditorium(auditoriumService.getById(1));
+		newTicketFirst.setEvent(eventService.getById(1));
+		newTicketFirst.setSeat(10);
+		newTicketFirst.setUser(userService.getById(1));
+		newTicketFirst.setDateTime(LocalDateTime.of(2016, 03, 01, 21, 45));
 	}
 
 	@Test
@@ -126,8 +130,9 @@ public class TicketServiceTest extends AbstractTestCase {
 
 	@Test
 	public void testGetTicketsForUser() {
-		List<Ticket> list = ticketService.getTicketsForUser(userFirst);
-		System.out.println("All bought tickets for user: " + userFirst.getName());
+		User user = userService.getById(0);
+		List<Ticket> list = ticketService.getTicketsForUser(user);
+		System.out.println("All bought tickets for user: " + user.getName());
 		System.out.println("Tickets:");
 		list.forEach(System.out::println);
 		assertTrue(list.size() > 0);
@@ -150,35 +155,34 @@ public class TicketServiceTest extends AbstractTestCase {
 	}
 
 	@Test
-	public void testCalculatePriceSecondCase() throws CloneNotSupportedException {
-		Ticket ticket = (Ticket) newTicketFirst.clone();
-		ticket.setUser(userSecond);
-
+	public void testCalculatePriceSecondCase()  {
+		User user = userService.getById(0);
+		newTicketFirst.setUser(user);
 		System.out.println("Calculating price for Ticket");
-		System.out.println("User: " + userSecond);
-		System.out.println("Event: " + ticket.getEvent());
-		System.out.println("Booking time:" + ticket.getDateTime());
-		long count = ticketService.getCountOfTicketsForUser(userSecond);
+		System.out.println("User: " + user);
+		System.out.println("Event: " + newTicketFirst.getEvent());
+		System.out.println("Booking time:" + newTicketFirst.getDateTime());
+		long count = ticketService.getCountOfTicketsForUser(user);
 		System.out.println("Number tickets user bought before:" + count);
-		ticketService.calculatePrice(ticket);
+		ticketService.calculatePrice(newTicketFirst);
 		System.out.println("\nBill details:");
-		System.out.println(ticket.getBillDetails());
-		assertTrue(ticket.getPrice() > 0);
+		System.out.println(newTicketFirst.getBillDetails());
+		assertTrue(newTicketFirst.getPrice() > 0);
 	}
 
 	@Test
-	public void testCalculatePriceNotRegisteredUser() throws CloneNotSupportedException {
-		Ticket ticket = (Ticket) newTicketFirst.clone();
-		ticket.setUser(null);
+	public void testCalculatePriceNotRegisteredUser()  {
+		
+		newTicketFirst.setUser(null);
 
 		System.out.println("Calculating price of Ticket for not registered User");
 
-		System.out.println("Event: " + ticket.getEvent());
-		System.out.println("Booking time:" + ticket.getDateTime());
+		System.out.println("Event: " + newTicketFirst.getEvent());
+		System.out.println("Booking time:" + newTicketFirst.getDateTime());
 
-		ticketService.calculatePrice(ticket);
+		ticketService.calculatePrice(newTicketFirst);
 		System.out.println("\nBill details:");
-		System.out.println(ticket.getBillDetails());
-		assertTrue(ticket.getPrice() > 0);
+		System.out.println(newTicketFirst.getBillDetails());
+		assertTrue(newTicketFirst.getPrice() > 0);
 	}
 }
