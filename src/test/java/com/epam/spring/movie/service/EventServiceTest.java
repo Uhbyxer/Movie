@@ -23,6 +23,8 @@ public class EventServiceTest extends AbstractTestCase {
 	
 	public static int testCounter = 0;
 	public static final String NAME = "Scary movie";
+	public static final String NAME_SECOND = "Scary movie 2";
+	public static final String NAME_THIRD = "Pulp Fiction";
 	
 	@Autowired
 	private EventService eventService;
@@ -55,7 +57,12 @@ public class EventServiceTest extends AbstractTestCase {
 		int size = eventService.getAll().size();
 		System.out.println("Create event: " + event);
 		eventService.create(event);
-		assertEquals(size + 1, eventService.getAll().size());
+		
+		event.setName(NAME_SECOND);
+		System.out.println("Create event: " + event);
+		eventService.create(event);
+		
+		assertEquals(size + 2, eventService.getAll().size());
 	}
 
 	@Test
@@ -98,11 +105,20 @@ public class EventServiceTest extends AbstractTestCase {
 	
 	@Test
 	public void testGetByName() {
-		Event event = eventService.getByName(NAME);
-		System.out.println("Event with name =  : " + NAME);
+		Event event = eventService.getByName(NAME_THIRD);
+		System.out.println("Event with name =  : " + NAME_THIRD);
 		System.out.println(event);
-		assertEquals(event.getName(), NAME);
+		assertEquals(event.getName(), NAME_THIRD);
 		
 	}
-
+	
+	@Test
+	public void testGetPrice() {
+		Event event = eventService.getById(1);
+		System.out.println("Get price of event :" + event);
+		double price = eventService.getPrice(event);
+		System.out.println(price);
+		assertTrue(price>0);
+		
+	}
 }

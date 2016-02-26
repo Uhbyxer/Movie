@@ -15,5 +15,10 @@ public class EventDaoStub extends BaseNamedDaoStub<Event> implements EventDao  {
 				.findFirst()
 				.orElse(null);
 	}
+
+	@Override
+	public double getPrice(Event event) {
+		return event.getPrice();
+	}
 	
 }

@@ -42,14 +42,15 @@ public class EventServiceImpl implements EventService {
 
 	@Override
 	public Event getByName(String name) {
-		
-//		Event event = eventDao.getByName(name);
-//		System.err.println("get bey name !!!!!!!!!!!!!!!!!!!!!!!! "  + event.getId());
-//		
-//		return event;
-		
 		return eventDao.getByName(name);
 	}
+
+	@Override
+	public double getPrice(Event event) {
+		return eventDao.getPrice(event);
+	}
+
+
 
 
 

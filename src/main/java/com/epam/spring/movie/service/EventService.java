@@ -18,4 +18,6 @@ public interface EventService {
 	public List<Event> getListByName(String name);
 	
 	public Event getByName(String name);
+	
+	public double getPrice(Event event);
 }	

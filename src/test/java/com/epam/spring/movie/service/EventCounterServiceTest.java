@@ -5,12 +5,12 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.epam.spring.movie.AbstractTestCase;
+import com.epam.spring.movie.bean.Event;
 import com.epam.spring.movie.bean.EventCounter;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
@@ -54,69 +54,15 @@ public class EventCounterServiceTest extends AbstractTestCase {
 	}
 
 
-	//@Ignore
 	@Test
 	public void testGetPriceCounter() {
-		EventCounter eventCounter = eventCounterService.getAll().get(1);
+		Event event = eventService.getById(1);
+		System.out.println("Again a price of event: " + eventService.getPrice(event));
+		
+		EventCounter eventCounter = eventCounterService.getByEvent(event);
 		System.out.println("Testing price counter for event: " + eventCounter.getEvent().getName());
-		
 		System.out.println(eventCounter.getPriceCount());
-		
-		System.out.println("All counters: " + eventCounterService.getAll());
-
-		
-		assertEquals(4, eventCounter.getPriceCount());
-		
-		
-	}
-
-	
-	@Ignore
-	@Test
-	public void testCreateAndIncrementBookCountOne() {
-		
-		EventCounter eventCounter = new EventCounter();
-		eventCounter.setEvent(eventService.getById(1));
-		eventCounter.setByNameCount(10);
-		eventCounter.setBookCount(28);
-		
-		eventCounterService.create(eventCounter);
-		
-		
-		
-	}
-	
-	@Ignore
-	@Test
-	public void testCreateAndIncrementBookCountTwo() {
-		
-//		System.out.println("All : " + eventCounterService.getAll());
-//		
-//		System.out.println(eventCounterService.getAll().get(0).getEvent());
-//		System.out.println(eventCounterService.getAll().get(0).getEvent().getId());
-		
-		
-		EventCounter eventCounter = eventCounterService.getByEvent(eventService.getById(1));
-		System.out.println(eventCounter);	
-		
-		
-		eventCounterService.incrementAndGetPriceCount(eventService.getById(1));
-		eventCounterService.incrementAndGetPriceCount(eventService.getById(1));
-		eventCounterService.incrementAndGetPriceCount(eventService.getById(1));
-
-		eventCounterService.incrementAndGetByNameCount(eventService.getById(1));
-		eventCounterService.incrementAndGetByNameCount(eventService.getById(1));
-		eventCounterService.incrementAndGetByNameCount(eventService.getById(1));
-		eventCounterService.incrementAndGetByNameCount(eventService.getById(1));
-		
-		
-		eventCounterService.incrementAndGetBookCount(eventService.getById(1));
-		eventCounterService.incrementAndGetBookCount(eventService.getById(1));
-		
-		eventCounter =  eventCounterService.getByEvent(eventService.getById(1));
-		System.out.println(eventCounter);
-		
-		//eventCounterService.create(eventCounter);
+		assertEquals(2, eventCounter.getPriceCount());
 		
 	}
 
@@ -130,10 +76,4 @@ public class EventCounterServiceTest extends AbstractTestCase {
 		assertEquals(1, eventCounter.getBookCount());
 	}
 	
-	@Ignore
-	@Test
-	public void testZeEnd() {
-		System.out.println("The end test");
-		System.out.println(eventCounterService.getAll());
-	}
 }

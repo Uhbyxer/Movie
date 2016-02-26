@@ -22,7 +22,7 @@ public class CounterAspect {
 	@Pointcut("execution(* com.epam.spring.movie.service.EventService.getByName(..))")
 	private void eventGetByName() {}
 	
-	@Pointcut("execution(* com.epam.spring.movie.bean.Event.getPrice(..))")
+	@Pointcut("execution(* com.epam.spring.movie.service.EventService.getPrice(..))")
 	private void eventGetPrice() {}	
 
 	@Pointcut("execution(* com.epam.spring.movie.service.TicketService.bookTicket(..))")
@@ -35,11 +35,13 @@ public class CounterAspect {
 		eventCounterService.incrementAndGetByNameCount((Event) event);
 	}
 	
-	@After("eventGetPrice()")
-	public void afterEventGetByName(JoinPoint jp) {
-		System.out.println("$$$$$$$$$$$$$$$$$$$$$$ ASPECT GET PRICE : " + jp.getTarget());
-		eventCounterService.incrementAndGetPriceCount((Event) jp.getTarget());
+	@After("eventGetPrice()&&args(event,..)")
+	public void afterEventGetPrice(Object event) {
+		System.out.println("$$$$$$$$$$$$$$$$$$$$$$ ASPECT GET PRICE : " + event);
+		eventCounterService.incrementAndGetPriceCount((Event) event);
 	}
+	
+
 	
 	
 	@After("eventBookTicket()")

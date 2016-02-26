@@ -14,7 +14,6 @@ public class Event extends NamedBean {
 		this.rating = rating;
 	}
 	
-	
 	public double getPrice() {
 		return price;
 	}
@@ -25,7 +24,7 @@ public class Event extends NamedBean {
 
 	@Override
 	public String toString() {
-		return name + " < Raiting: " + rating + "; Base price: $" + price + " >";
+		return name +"( id = " + id  + ") < Raiting: " + rating + "; Base price: $" + price + " >";
 	}
 
 		

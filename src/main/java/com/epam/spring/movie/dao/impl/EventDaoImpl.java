@@ -2,14 +2,17 @@ package com.epam.spring.movie.dao.impl;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
 import org.springframework.jdbc.core.RowMapper;
+
 import com.epam.spring.movie.bean.Event;
 import com.epam.spring.movie.dao.EventDao;
 
 public class EventDaoImpl extends BaseNamedDaoImpl<Event> implements EventDao {
 
 	private static final String INSERT_RECORD = "insert into event (name, rating, price) VALUES (?,?,?)";
-
+	
+	private static final String GET_PRICE_BY_EVENT = "select price from event where id = ?";
 
 	@Override
 	protected Event getBeanFromResultSet(ResultSet rs) throws SQLException {
@@ -54,7 +57,15 @@ public class EventDaoImpl extends BaseNamedDaoImpl<Event> implements EventDao {
 			return null;
 		}
 	}
-
+	
+	@Override
+	public double getPrice(Event event) {
+		
+		return jdbcTemplate.queryForObject(
+				GET_PRICE_BY_EVENT, Double.class, 
+				event.getId());
+	}
+	
 	public EventDaoImpl() {
 		super("event");
 	}
