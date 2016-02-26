@@ -1,8 +1,14 @@
 package com.epam.spring.movie.dao.impl;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
+
 import com.epam.spring.movie.bean.Event;
 import com.epam.spring.movie.bean.EventCounter;
 import com.epam.spring.movie.dao.EventCounterDao;
@@ -31,6 +37,13 @@ public class EventCounterDaoImpl extends  BaseDaoImpl<EventCounter> implements E
 		eventCounter.setBookCount(rs.getInt("book_count"));
 		eventCounter.setPriceCount(rs.getInt("price_count"));
 		eventCounter.setByNameCount(rs.getInt("by_name_count"));
+		
+		if(eventDao.getById(rs.getInt("event_id"))==null) {
+			System.err.println("***************************************************AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA " + rs.getInt("event_id"));
+			System.out.println("All:");
+			eventDao.getAll().forEach(x -> System.out.println(x.getId()));
+		}
+		
 		eventCounter.setEvent(eventDao.getById(rs.getInt("event_id")));
 		
 		return eventCounter;
@@ -64,6 +77,7 @@ public class EventCounterDaoImpl extends  BaseDaoImpl<EventCounter> implements E
 		if(eventCounter == null) {
 			eventCounter = new EventCounter();
 			eventCounter.setEvent(event);
+			
 			create(eventCounter);
 		}
 		return eventCounter;
@@ -96,19 +110,22 @@ public class EventCounterDaoImpl extends  BaseDaoImpl<EventCounter> implements E
 	@Override
 	public void create(EventCounter eventCounter) {
 
-		jdbcTemplate.update(
-				INSERT_RECORD,
-				eventCounter.getEvent().getId(),
-				eventCounter.getByNameCount(),
-				eventCounter.getPriceCount(),
-				eventCounter.getBookCount()
-		);
-		
+		   KeyHolder holder = new GeneratedKeyHolder();
+	        jdbcTemplate.update(connection -> {
+	            PreparedStatement preparedStatement = connection.prepareStatement(INSERT_RECORD, Statement.RETURN_GENERATED_KEYS);
+	            preparedStatement.setInt(1, eventCounter.getEvent().getId());
+	            preparedStatement.setInt(2, eventCounter.getByNameCount());
+	            preparedStatement.setInt(3, eventCounter.getPriceCount());
+	            preparedStatement.setInt(4, eventCounter.getBookCount());
+	            return preparedStatement;
+	            
+	        }, holder);
+	        
+	        eventCounter.setId(holder.getKey().intValue());
 	}
 	
 	@Override
 	public void update(EventCounter eventCounter) {
-		System.out.println("/////////////////////////////////////////////////////////////UPDATE");
 		jdbcTemplate.update(
 				UPDATE_RECORD,
 				eventCounter.getEvent().getId(),

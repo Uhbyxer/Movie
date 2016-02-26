@@ -44,7 +44,7 @@ public class EventCounter extends BaseBean {
 
 	@Override
 	public String toString() {
-		return "Counter for " + event.getName() + ": byNameCount=" + byNameCount + ", priceCount=" + priceCount
+		return "Counter for " + (event == null ? "nullEvent": "event id:" + event.getId() + " name:" + event.getName()) + ": byNameCount=" + byNameCount + ", priceCount=" + priceCount
 				+ ", bookCount=" + bookCount;
 	}
 	
