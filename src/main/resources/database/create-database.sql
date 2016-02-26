@@ -47,3 +47,11 @@ create table event_counter (
   primary key (id)
 );
 
+create table discount_counter (
+  id int not null auto_increment,
+  user_id int,
+  discount_id int,
+  count int,
+  primary key (id)
+);
+
