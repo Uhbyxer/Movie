@@ -16,13 +16,13 @@
  		">
  		
  		
- 	<bean id="disc_0" class="com.epam.spring.movie.bean.DiscountStrategy">
+ 	<bean id="disc_0" class="com.epam.spring.movie.bean.BirthdayDiscountStrategy">
 		<property name="id"  value="0" />
 		<property name="name"  value="birthday-discount" />
 		<property name="mainDiscount" value="5" />
 	</bean>
 	
-	<bean id="disc_1" class="com.epam.spring.movie.bean.DiscountStrategy">
+	<bean id="disc_1" class="com.epam.spring.movie.bean.EveryTicketDiscountStrategy">
 		<property name="id"  value="1" />
 		<property name="name"  value="every-ticket-discount" />
 		<property name="everyTicketDiscount" value="50" />
