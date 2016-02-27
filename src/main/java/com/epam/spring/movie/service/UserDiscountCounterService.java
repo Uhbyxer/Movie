@@ -20,4 +20,6 @@ public interface UserDiscountCounterService {
 	public int incrementAndGetCount(User user, DiscountStrategy discountStrategy);
 	
 	public int getTotalCountByDiscount(DiscountStrategy discountStrategy);
+	
+	public void update(UserDiscountCounter userDiscountCounter); 
 }

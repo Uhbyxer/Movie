@@ -5,7 +5,6 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,7 +62,7 @@ public class UserDiscountCounterServiceTest extends AbstractTestCase {
 		System.out.println("Discount: " + discountStrategy.getName());
 		UserDiscountCounter userDiscountCounter = userDiscountCounterService.getByUserAndDiscount(user, discountStrategy);
 		System.out.println("count = " +  userDiscountCounter.getCount());
-		assertEquals(3, userDiscountCounter.getCount());
+		assertEquals(2, userDiscountCounter.getCount());
 	}
 	
 	@Test
@@ -87,8 +86,10 @@ public class UserDiscountCounterServiceTest extends AbstractTestCase {
 		int count = userDiscountCounterService.getTotalCountByDiscount(discountStrategy);
 		System.out.println(count);
 		
-		assertEquals(3, count);
+		assertEquals(2, count);
 		
 	}
+	
+
 
 }

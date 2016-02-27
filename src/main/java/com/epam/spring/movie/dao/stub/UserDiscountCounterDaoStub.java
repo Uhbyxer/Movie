@@ -61,6 +61,11 @@ public class UserDiscountCounterDaoStub extends BaseDaoStub<UserDiscountCounter>
 	
 	public UserDiscountCounterDaoStub() {
 		holder = new HashMap<>();
+	}
+
+	@Override
+	public void update(UserDiscountCounter userDiscountCounter) {
+		
 	}	
 	
 	

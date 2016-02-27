@@ -51,4 +51,9 @@ public class UserDiscountCounterServiceImpl implements UserDiscountCounterServic
 		return userDiscountCounterDao.getTotalCountByDiscount(discountStrategy);
 	}
 
+	@Override
+	public void update(UserDiscountCounter userDiscountCounter) {
+		userDiscountCounterDao.update(userDiscountCounter);
+	}
+
 }

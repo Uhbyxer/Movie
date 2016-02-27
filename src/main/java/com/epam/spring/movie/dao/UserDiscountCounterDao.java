@@ -13,5 +13,7 @@ public interface UserDiscountCounterDao extends BaseDao<UserDiscountCounter>{
 	public int incrementAndGetCount(User user, DiscountStrategy discountStrategy);
 	
 	public int getTotalCountByDiscount(DiscountStrategy discountStrategy);
+
+	public void update(UserDiscountCounter userDiscountCounter);
 	
 }
