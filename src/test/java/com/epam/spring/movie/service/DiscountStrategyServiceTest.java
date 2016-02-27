@@ -1,18 +1,15 @@
 package com.epam.spring.movie.service;
 
 import static org.junit.Assert.*;
-
-
+import java.time.LocalDateTime;
+import java.time.Month;
 import java.util.List;
-
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-
 import com.epam.spring.movie.AbstractTestCase;
 import com.epam.spring.movie.bean.DiscountStrategy;
 import com.epam.spring.movie.bean.Ticket;
@@ -23,17 +20,21 @@ public class DiscountStrategyServiceTest extends AbstractTestCase {
 
 	public static int testCounter = 0;
 	
-	@Autowired
-	@Qualifier("new_ticket_7")
 	private Ticket newTicketFirst;
-	
 	
 	@Autowired
 	private TicketService ticketService;
 	
+	@Autowired
+	private UserService userService;
 	
 	@Autowired
-	@Qualifier("user_0")
+	private EventService eventService;
+	
+	@Autowired
+	private AuditoriumService auditoriumService;
+	
+	
 	private User userFirst;
 	
 	public void setTicketService(TicketService ticketService) {
@@ -55,6 +56,15 @@ public class DiscountStrategyServiceTest extends AbstractTestCase {
 	@Before
 	public void setUp() throws Exception {
 		System.out.println("\nTest # " + ++testCounter);
+		
+		userFirst = userService.getById(0);
+		newTicketFirst = new Ticket();
+		newTicketFirst.setId(7);
+		newTicketFirst.setEvent(eventService.getById(1));
+		newTicketFirst.setAuditorium(auditoriumService.getById(1));
+		newTicketFirst.setSeat(10);
+		newTicketFirst.setUser(userService.getById(1));
+		newTicketFirst.setDateTime(LocalDateTime.of(2016, Month.MARCH, 01, 21, 45, 0));
 	}
 
 	@Test
@@ -114,7 +124,7 @@ public class DiscountStrategyServiceTest extends AbstractTestCase {
 	
 	@Test
 	public void testGetBestDiscountStrategyForUserThirdCase() throws CloneNotSupportedException {
-		Ticket ticket = (Ticket) newTicketFirst.clone();
+		Ticket ticket = newTicketFirst;
 		ticket.setUser(userFirst);
 		
 		System.out.println("Get discount strategy for user : " + userFirst);
@@ -131,7 +141,7 @@ public class DiscountStrategyServiceTest extends AbstractTestCase {
 	
 	@Test
 	public void testGetBestDiscountStrategyForUserFourthCase() throws CloneNotSupportedException {
-		Ticket ticket = (Ticket) newTicketFirst.clone();
+		Ticket ticket = newTicketFirst;
 		ticket.setUser(userFirst);
 		
 		System.out.println("Get discount strategy for user : " + userFirst);
