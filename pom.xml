@@ -3,11 +3,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.epam.spring</groupId>
-	<artifactId>com.epam.spring.movie</artifactId>
+	<artifactId>movie</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 
-	<name>com.epam.spring.movie</name>
+	<name>movie</name>
 	<url>http://maven.apache.org</url>
 
 	<properties>

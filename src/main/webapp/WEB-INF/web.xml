@@ -5,7 +5,6 @@
  
   <display-name>Movie</display-name>
  
-  
   <servlet>
      <servlet-name>dispatcher</servlet-name>
      <servlet-class>
@@ -27,6 +26,9 @@
      </param-value>
  </context-param>
  
+  <welcome-file-list>  
+   <welcome-file>/events</welcome-file>  
+  </welcome-file-list>  
   
 
  <listener>

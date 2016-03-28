@@ -16,7 +16,8 @@ public class EventController {
 	@Autowired
 	private EventService eventService;
 
-	@RequestMapping(value = "/events", method = RequestMethod.GET)
+	
+	@RequestMapping(value = { "/", "/events" }, method = RequestMethod.GET)
 	public String getAllEvents(Model model) {
 		List<Event> events = eventService.getAll();
 		model.addAttribute("events", events);
