@@ -12,11 +12,11 @@ import com.epam.spring.movie.bean.Event;
 import com.epam.spring.movie.bean.Ticket;
 import com.epam.spring.movie.service.EventCounterService;
 
-@Aspect
-@Component
+//@Aspect
+//@Component
 public class CounterAspect {
 	
-	@Autowired
+//	@Autowired
 	private EventCounterService eventCounterService;
 	
 	@Pointcut("execution(* com.epam.spring.movie.service.EventService.getByName(..))")

@@ -1,0 +1,15 @@
+<h1>Index</h1>
+ 
+<h2>Department list</h2>
+<table border="1">
+<tr>
+ <th>Event No</th>
+ <th>Event Name</th>
+</tr>
+#foreach($event in $events)
+  <tr>
+   <td>$event.id</td>
+   <td>$event.name</td>
+  </tr>
+#end
+</table>

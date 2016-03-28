@@ -1,15 +1,19 @@
 package com.epam.spring.movie.service;
 
 import static org.junit.Assert.*;
+
 import java.time.LocalDateTime;
 import java.time.Month;
 import java.util.List;
+
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import com.epam.spring.movie.AbstractTestCase;
 import com.epam.spring.movie.bean.DiscountStrategy;
 import com.epam.spring.movie.bean.Ticket;
@@ -92,6 +96,7 @@ public class DiscountStrategyServiceTest extends AbstractTestCase {
 		assertNull(discount);
 	}
 	
+	@Ignore
 	@Test
 	public void testGetBestDiscountStrategyForUserFirstCase() {
 		User userFirst = newTicketFirst.getUser();

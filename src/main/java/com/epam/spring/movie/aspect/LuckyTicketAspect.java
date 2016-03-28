@@ -13,11 +13,11 @@ import com.epam.spring.movie.bean.Ticket;
 
 import com.epam.spring.movie.service.TicketService;
 
-@Aspect
-@Component
+//@Aspect
+//@Component
 public class LuckyTicketAspect {
 	
-	@Autowired
+	//@Autowired
 	private TicketService ticketService;
 
 	public void setTicketService(TicketService ticketService) {

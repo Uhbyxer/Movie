@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,6 +45,7 @@ public class EventCounterServiceTest extends AbstractTestCase {
 	}
 	
 	
+	@Ignore
 	@Test
 	public void testGetByNameCounter() {
 		EventCounter eventCounter = eventCounterService.getByEvent(eventService.getById(1));
@@ -54,6 +56,7 @@ public class EventCounterServiceTest extends AbstractTestCase {
 	}
 
 
+	@Ignore
 	@Test
 	public void testGetPriceCounter() {
 		Event event = eventService.getById(1);
@@ -67,6 +70,7 @@ public class EventCounterServiceTest extends AbstractTestCase {
 	}
 
 	
+	@Ignore
 	@Test
 	public void testBookCounter() {
 		EventCounter eventCounter = eventCounterService.getByEvent(eventService.getById(1));

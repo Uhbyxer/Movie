@@ -8,9 +8,11 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import com.epam.spring.movie.AbstractTestCase;
 import com.epam.spring.movie.bean.Ticket;
 import com.epam.spring.movie.bean.User;
@@ -69,6 +71,7 @@ public class TicketServiceTest extends AbstractTestCase {
 	}
 
 	
+	@Ignore
 	@Test
 	public void testToBookTicket() {
 		

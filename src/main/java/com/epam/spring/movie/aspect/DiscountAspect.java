@@ -11,14 +11,14 @@ import com.epam.spring.movie.bean.Ticket;
 import com.epam.spring.movie.service.DiscountStrategyService;
 import com.epam.spring.movie.service.UserDiscountCounterService;
 
-@Aspect
-@Component
+//@Aspect
+//@Component
 public class DiscountAspect {
 	
-	@Autowired
+	//@Autowired
 	private DiscountStrategyService discountStrategyService;
 	
-	@Autowired
+	//@Autowired
 	private UserDiscountCounterService userDiscountCounterService; 
 	
 	@Pointcut("execution(* com.epam.spring.movie.service.DiscountStrategyService.getBestDiscountStrategy(..))")
