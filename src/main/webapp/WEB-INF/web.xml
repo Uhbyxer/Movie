@@ -21,10 +21,21 @@
  
  <!-- Other XML Configuration -->
  <!-- Load by Spring ContextLoaderListener -->
+<!--  <context-param> -->
+<!--      <param-name>contextConfigLocation</param-name> -->
+<!--      <param-value> -->
+<!--       /WEB-INF/conf/spring.xml, -->
+<!--       /WEB-INF/spring-mvc-servlet.xml -->
+<!--      </param-value> -->
+<!--  </context-param> -->
+ 
+
+
+
  <context-param>
      <param-name>contextConfigLocation</param-name>
      <param-value>
-      /WEB-INF/conf/spring.xml,
+      classpath:/spring.xml,
       /WEB-INF/spring-mvc-servlet.xml
      </param-value>
  </context-param>
