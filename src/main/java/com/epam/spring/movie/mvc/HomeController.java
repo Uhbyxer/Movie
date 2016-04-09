@@ -9,15 +9,20 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.epam.spring.movie.bean.Auditorium;
 import com.epam.spring.movie.bean.Event;
+import com.epam.spring.movie.service.AuditoriumService;
 import com.epam.spring.movie.service.EventService;
 
 @Controller
 //@RequestMapping(value = { "/", "/events" })
-public class EventController {
+public class HomeController {
 
 	@Autowired
 	private EventService eventService;
+	
+	@Autowired 
+	private AuditoriumService auditoriumService;
 
 	
 	//..., headers = "accept/text/*"
@@ -31,14 +36,18 @@ public class EventController {
 //	}
 //	
 
-	@RequestMapping(value = { "/", "/events" })
+	@RequestMapping(value = { "/", "/home" })
 	public ModelAndView getAllEvents(HttpServletRequest request) {
 		
 		//String foo = request.getParameter("foo");
+
+		ModelAndView mav = new ModelAndView("home");
 		
 		List<Event> events = eventService.getAll();
-		ModelAndView mav = new ModelAndView("events");
 		mav.addObject("events", events);
+		
+		List<Auditorium> auditoriums = auditoriumService.getAll();
+		mav.addObject("auditoriums", auditoriums);
 		
 		return mav;
 	}

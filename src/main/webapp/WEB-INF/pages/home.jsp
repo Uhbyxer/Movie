@@ -1,18 +1,43 @@
-<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
+
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE HTML>
 	<head>
-		<title>Videos Website Template | Home :: W3layouts</title>
-		<link href="css/style.css" rel="stylesheet" type="text/css"  media="all" />
+		<title>Movies</title>
+		
+		<link href="<c:url value="/css/style.css" />" rel="stylesheet">
 	</head>
 	<body>
 		<!---start-wrap---->
 			<!---start-header---->
-
+			<div class="header">
+				<div class="wrap">
+				<!---start-logo---->
+				<div class="logo">
+					<a href="index.html"><img src="images/logo.png" title="logo" /></a>
+				</div>
+				<!---End-logo---->
+				<!---start-top-menu-search---->
+				<div class="top-menu">
+					<div class="top-nav">
+						<ul>
+							<li><a href="#">Blog</a></li>
+							<li><a href="#">Videos</a></li>
+							<li><a href="categories.html">Categories</a></li>
+							<li><a href="contact.html">Contact</a></li>
+						</ul>
+					</div>
+					<div class="search">
+						<form>
+							<input type="text" class="textbox" value="Search:" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
+							<input type="submit" value=" " />
+						</form>
+					</div>
+					<div class="clear"> </div>
+				</div>
+				<div class="clear"> </div>
+				<!---End-top-menu-search---->
+			</div>
 			<!---End-header---->
 		</div>
 		<div class="clear"> </div>
@@ -39,19 +64,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					</div>
 					<div class="clear"> </div>
 					<div class="type-videos">
-						<h3>Labels</h3>
+						<h3>Our cinemas:</h3>
 						<ul>
-							<li><a href="#">Lorem ipsum dolor</a></li>
-							<li><a href="#">Lorem ipsum dolor</a></li>
-							<li><a href="#">Lorem ipsum dolor</a></li>
-							<li><a href="#">Lorem ipsum dolor</a></li>
-							<li><a href="#">Lorem ipsum dolor</a></li>
-							<li><a href="#">Lorem ipsum dolor</a></li>
-							<li><a href="#">Lorem ipsum dolor</a></li>
-							<li><a href="#">Lorem ipsum dolor</a></li>
-							<li><a href="#">Lorem ipsum dolor</a></li>
-							<li><a href="#">Lorem ipsum dolor</a></li>
-							<li><a href="#">Lorem ipsum dolor</a></li>
+							<c:forEach items="${auditoriums}" var="auditorium">
+								<li><a href="#"><c:out value="${auditorium.name}"/></a></li>
+							</c:forEach>
+
 						</ul>
 					</div>
 				</div>
@@ -76,6 +94,22 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<div class="clear"> </div>
 				</div>
 				<div class="content-grids">
+					<c:forEach items="${events}" var="event">
+	
+						
+						<div class="content-grid">
+							<a href="singlepage.html"><img src="images/gridallbum${event.id}.png" title="allbum-name" /></a>
+							<h3>${event.name}</h3>
+							<ul>
+								<li><a href="#"><img src="images/likes.png" title="image-name" /></a></li>
+								<li><a href="#"><img src="images/views.png" title="image-name" /></a></li>
+								<li><a href="#"><img src="images/link.png" title="image-name" /></a></li>
+							</ul>
+							<a class="button" href="singlepage.html">Watch now</a>
+						</div>
+					</c:forEach>
+				
+				
 					<div class="content-grid">
 						<a href="singlepage.html"><img src="images/gridallbum1.png" title="allbum-name" /></a>
 						<h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h3>
@@ -217,6 +251,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		</div>
 		<div class="clear"> </div>
 		<!---End-content---->
+		<!---start-copy-right---->
+		<div class="copy-right">
+			<p>Design by <a href="http://w3layouts.com/">W3layouts</a></p>
+		</div>
+		<!---End-copy-right---->
 		<!---End-wrap---->
 	</body>
 </html>
