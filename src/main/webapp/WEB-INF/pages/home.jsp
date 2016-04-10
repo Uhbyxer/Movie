@@ -93,11 +93,21 @@
 					</div>
 					<div class="clear"> </div>
 				</div>
+				<c:set var="i" value="${0}"/>
 				<div class="content-grids">
 					<c:forEach items="${events}" var="event">
+						<c:set var="i" value="${i+1}"/>
 	
+						<c:choose>
+    						<c:when test="${i % 4 == 0}">
+    							<c:set var="gridClass" value="content-grid last-grid"/>
+    						</c:when>
+ 							<c:otherwise>
+ 								<c:set var="gridClass" value="content-grid"/>
+ 						   </c:otherwise>
+						</c:choose>
 						
-						<div class="content-grid">
+						<div class="${gridClass}">
 							<a href="singlepage.html"><img src="images/gridallbum${event.id}.png" title="allbum-name" /></a>
 							<h3>${event.name}</h3>
 							<ul>
@@ -108,138 +118,29 @@
 							<a class="button" href="singlepage.html">Watch now</a>
 						</div>
 					</c:forEach>
-				
-				
-					<div class="content-grid">
-						<a href="singlepage.html"><img src="images/gridallbum1.png" title="allbum-name" /></a>
-						<h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h3>
-						<ul>
-							<li><a href="#"><img src="images/likes.png" title="image-name" /></a></li>
-							<li><a href="#"><img src="images/views.png" title="image-name" /></a></li>
-							<li><a href="#"><img src="images/link.png" title="image-name" /></a></li>
-						</ul>
-						<a class="button" href="singlepage.html">Watch now</a>
-					</div>
-					<div class="content-grid">
-						<a href="singlepage.html"><img src="images/gridallbum2.png" title="allbum-name" /></a>
-						<h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h3>
-						<ul>
-							<li><a href="#"><img src="images/likes.png" title="image-name" /></a></li>
-							<li><a href="#"><img src="images/views.png" title="image-name" /></a></li>
-							<li><a href="#"><img src="images/link.png" title="image-name" /></a></li>
-						</ul>
-						<a class="button" href="singlepage.html">Watch now</a>
-					</div>
-					<div class="content-grid">
-						<a href="singlepage.html"><img src="images/gridallbum3.png" title="allbum-name" /></a>
-						<h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h3>
-						<ul>
-							<li><a href="#"><img src="images/likes.png" title="image-name" /></a></li>
-							<li><a href="#"><img src="images/views.png" title="image-name" /></a></li>
-							<li><a href="#"><img src="images/link.png" title="image-name" /></a></li>
-						</ul>
-						<a class="button" href="singlepage.html">Watch now</a>
-					</div>
-					<div class="content-grid last-grid">
-						<a href="singlepage.html"><img src="images/gridallbum4.png" title="allbum-name" /></a>
-						<h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h3>
-						<ul>
-							<li><a href="#"><img src="images/likes.png" title="image-name" /></a></li>
-							<li><a href="#"><img src="images/views.png" title="image-name" /></a></li>
-							<li><a href="#"><img src="images/link.png" title="image-name" /></a></li>
-						</ul>
-						<a class="button" href="singlepage.html">Watch now</a>
-					</div>
-					<div class="content-grid">
-						<a href="singlepage.html"><img src="images/gridallbum5.png" title="allbum-name" /></a>
-						<h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h3>
-						<ul>
-							<li><a href="#"><img src="images/likes.png" title="image-name" /></a></li>
-							<li><a href="#"><img src="images/views.png" title="image-name" /></a></li>
-							<li><a href="#"><img src="images/link.png" title="image-name" /></a></li>
-						</ul>
-						<a class="button" href="singlepage.html">Watch now</a>
-					</div>
-					<div class="content-grid">
-						<a href="singlepage.html"><img src="images/gridallbum6.png" title="allbum-name" /></a>
-						<h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h3>
-						<ul>
-							<li><a href="#"><img src="images/likes.png" title="image-name" /></a></li>
-							<li><a href="#"><img src="images/views.png" title="image-name" /></a></li>
-							<li><a href="#"><img src="images/link.png" title="image-name" /></a></li>
-						</ul>
-						<a class="button" href="singlepage.html">Watch now</a>
-					</div>
-					<div class="content-grid">
-						<a href="singlepage.html"><img src="images/gridallbum7.png" title="allbum-name" /></a>
-						<h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h3>
-						<ul>
-							<li><a href="#"><img src="images/likes.png" title="image-name" /></a></li>
-							<li><a href="#"><img src="images/views.png" title="image-name" /></a></li>
-							<li><a href="#"><img src="images/link.png" title="image-name" /></a></li>
-						</ul>
-						<a class="button" href="singlepage.html">Watch now</a>
-					</div>
-					<div class="content-grid last-grid">
-						<a href="singlepage.html"><img src="images/gridallbum8.png" title="allbum-name" /></a>
-						<h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h3>
-						<ul>
-							<li><a href="#"><img src="images/likes.png" title="image-name" /></a></li>
-							<li><a href="#"><img src="images/views.png" title="image-name" /></a></li>
-							<li><a href="#"><img src="images/link.png" title="image-name" /></a></li>
-						</ul>
-						<a class="button" href="singlepage.html">Watch now</a>
-					</div>
-					<div class="content-grid">
-						<a href="singlepage.html"><img src="images/gridallbum9.png" title="allbum-name" /></a>
-						<h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h3>
-						<ul>
-							<li><a href="#"><img src="images/likes.png" title="image-name" /></a></li>
-							<li><a href="#"><img src="images/views.png" title="image-name" /></a></li>
-							<li><a href="#"><img src="images/link.png" title="image-name" /></a></li>
-						</ul>
-						<a class="button" href="singlepage.html">Watch now</a>
-					</div>
-					<div class="content-grid">
-						<a href="singlepage.html"><img src="images/gridallbum10.png" title="allbum-name" /></a>
-						<h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h3>
-						<ul>
-							<li><a href="#"><img src="images/likes.png" title="image-name" /></a></li>
-							<li><a href="#"><img src="images/views.png" title="image-name" /></a></li>
-							<li><a href="#"><img src="images/link.png" title="image-name" /></a></li>
-						</ul>
-						<a class="button" href="singlepage.html">Watch now</a>
-					</div>
-					<div class="content-grid">
-						<a href="singlepage.html"><img src="images/gridallbum11.png" title="allbum-name" /></a>
-						<h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h3>
-						<ul>
-							<li><a href="#"><img src="images/likes.png" title="image-name" /></a></li>
-							<li><a href="#"><img src="images/views.png" title="image-name" /></a></li>
-							<li><a href="#"><img src="images/link.png" title="image-name" /></a></li>
-						</ul>
-						<a class="button" href="singlepage.html">Watch now</a>
-					</div>
-					<div class="content-grid last-grid">
-						<a href="singlepage.html"><img src="images/gridallbum1.png" title="allbum-name" /></a>
-						<h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h3>
-						<ul>
-							<li><a href="#"><img src="images/likes.png" title="image-name" /></a></li>
-							<li><a href="#"><img src="images/views.png" title="image-name" /></a></li>
-							<li><a href="#"><img src="images/link.png" title="image-name" /></a></li>
-						</ul>
-						<a class="button" href="singlepage.html">Watch now</a>
-					</div>
+			
 					<div class="clear"> </div>
-					<!---start-pagenation----->
+					<!---start-pagenation-----> 
 					<div class="pagenation">
 						<ul>
-							<li><a href="#">1</a></li>
-							<li><a href="#">2</a></li>
-							<li><a href="#">3</a></li>
-							<li><a href="#">4</a></li>
-							<li><a href="#">5</a></li>
-							<li><a href="#">Next</a></li>
+						
+						<c:forEach begin="1" end="${pages}" var="i">
+							<c:choose>
+    							<c:when test="${i == page}">
+    								<c:set var="pageClass" value="pagenation-selected"/>
+    							</c:when>
+ 								<c:otherwise>
+ 									<c:set var="pageClass" value=""/>
+ 							   </c:otherwise>
+							</c:choose>						
+						
+							
+    						<li><a class="${pageClass}" href="home?page=${i}"><c:out value="${i}"/></a></li>
+						</c:forEach>	
+						<c:if test="${page < pages}">
+							<li><a href="home?page=${page + 1}">Next</a></li>
+						</c:if>						
+						
 						</ul>
 					</div>
 					<div class="clear"> </div>

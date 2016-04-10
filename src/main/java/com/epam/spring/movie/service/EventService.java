@@ -20,4 +20,9 @@ public interface EventService {
 	public Event getByName(String name);
 	
 	public double getPrice(Event event);
+	
+	public List<Event> getEventsForPage(int pageNumber, int rowsPerPage);
+	
+	public int getCount();
+	
 }	

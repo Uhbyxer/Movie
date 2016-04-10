@@ -2,6 +2,8 @@ package com.epam.spring.movie.dao.impl;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.ZoneId;
+import java.util.List;
 
 import org.springframework.jdbc.core.RowMapper;
 
@@ -13,6 +15,11 @@ public class EventDaoImpl extends BaseNamedDaoImpl<Event> implements EventDao {
 	private static final String INSERT_RECORD = "insert into event (name, rating, price) VALUES (?,?,?)";
 	
 	private static final String GET_PRICE_BY_EVENT = "select price from event where id = ?";
+
+	private static final String GET_EVENTS_FOR_PAGE = "select * from event limit ? offset ?";
+	
+	private static final String GET_COUNT = "select count(*) from event"; 
+
 
 	@Override
 	protected Event getBeanFromResultSet(ResultSet rs) throws SQLException {
@@ -68,6 +75,31 @@ public class EventDaoImpl extends BaseNamedDaoImpl<Event> implements EventDao {
 	
 	public EventDaoImpl() {
 		super("event");
+	}
+
+
+	@Override
+	public List<Event> getEventsForPage(int pageNumber, int rowsPerPage) {
+		return  jdbcTemplate.query(GET_EVENTS_FOR_PAGE, new Object[] {rowsPerPage,  (pageNumber - 1) * rowsPerPage}, new RowMapper<Event>() {
+			
+			public Event mapRow(ResultSet rs, int rowNum) throws SQLException {
+
+				return getBeanFromResultSet(rs);
+				
+			}
+
+		});
+	}
+
+
+
+	@Override
+	public int getCount() {
+		
+		return jdbcTemplate.queryForObject(
+				GET_COUNT, Integer.class
+		);		
+
 	}
 	
 

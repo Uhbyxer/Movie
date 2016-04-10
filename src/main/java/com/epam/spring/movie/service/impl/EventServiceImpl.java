@@ -50,8 +50,15 @@ public class EventServiceImpl implements EventService {
 		return eventDao.getPrice(event);
 	}
 
+	@Override
+	public List<Event> getEventsForPage(int pageNumber, int rowsPerPage) {
+		return eventDao.getEventsForPage(pageNumber, rowsPerPage);
+	}
 
-
+	@Override
+	public int getCount() {
+		return eventDao.getCount();
+	}
 
 
 }

@@ -17,6 +17,7 @@ import com.epam.spring.movie.service.EventService;
 @Controller
 //@RequestMapping(value = { "/", "/events" })
 public class HomeController {
+	private static int EVENTS_PER_PAGE = 12;
 
 	@Autowired
 	private EventService eventService;
@@ -37,13 +38,23 @@ public class HomeController {
 //	
 
 	@RequestMapping(value = { "/", "/home" })
-	public ModelAndView getAllEvents(HttpServletRequest request) {
+	public ModelAndView getEventsAndAuditoriums(HttpServletRequest request) {
 		
-		//String foo = request.getParameter("foo");
+		int eventsCount = eventService.getCount();
+		
+		//ceil  int pages count
+		int pages = (eventsCount - 1) / EVENTS_PER_PAGE + 1;
+		
+		String pageParam = request.getParameter("page");
+		int page = 1;
+		if(pageParam != null ) 
+				page = Integer.parseInt(pageParam);
 
 		ModelAndView mav = new ModelAndView("home");
+		mav.addObject("pages", pages);
+		mav.addObject("page", page);
 		
-		List<Event> events = eventService.getAll();
+		List<Event> events = eventService.getEventsForPage(page, EVENTS_PER_PAGE);
 		mav.addObject("events", events);
 		
 		List<Auditorium> auditoriums = auditoriumService.getAll();

@@ -421,6 +421,12 @@ img{max-width:100%;}
 	display: block;
 	font-size: 0.875em;
 }
+
+.pagenation-selected{
+	color: red !important;
+}
+
+
 .pagenation ul li a:hover{
 	color: #888;
 }

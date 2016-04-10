@@ -34,8 +34,6 @@ public class EventServiceTest extends AbstractTestCase {
 		this.eventService = eventService;
 	}
 	
-
-
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		System.out.println("\n*********************************************** EventService Tests --->");
@@ -121,4 +119,21 @@ public class EventServiceTest extends AbstractTestCase {
 		assertTrue(price>0);
 		
 	}
+	
+	@Test
+	public void testPaging() {
+		List<Event> events = eventService.getEventsForPage(3, 12);
+		System.out.println("Paged events:");
+		events.forEach(System.out::println);
+		assertTrue(events.size() > 0);
+	}	
+	
+	@Test
+	public void testGetCount() {
+		int count = eventService.getCount();
+		System.out.println("Count of events :" + count);
+		assertTrue(count>0);
+		
+	}
+	
 }
