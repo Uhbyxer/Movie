@@ -424,6 +424,7 @@ img{max-width:100%;}
 
 .pagenation-selected{
 	color: red !important;
+	text-decoration: underline;
 }
 
 

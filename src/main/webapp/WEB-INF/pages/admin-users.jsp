@@ -3,7 +3,7 @@
 
 <!DOCTYPE HTML>
 	<head>
-		<title>Spring - Movies | HOME</title>
+		<title>Admin | Users</title>
 		
 		<link href="<c:url value="/css/style.css" />" rel="stylesheet">
 	</head>
@@ -95,7 +95,7 @@
 				</div>
 				<c:set var="i" value="${0}"/>
 				<div class="content-grids">
-					<c:forEach items="${events}" var="event">
+					<c:forEach items="${users}" var="user">
 						<c:set var="i" value="${i+1}"/>
 	
 						<c:choose>
@@ -108,7 +108,7 @@
 						</c:choose>
 						
 						<div class="${gridClass}">
-							<a href="movies/${event.name}"><img src="images/gridallbum${event.id}.png" title="allbum-name" /></a>
+							<a href="movies/${user.id}"><img src="images/user${user.id}.png" title="allbum-name" /></a>
 							<h3>${event.name}</h3>
 							<ul>
 								<li><a href="#"><img src="images/likes.png" title="image-name" /></a></li>
@@ -121,29 +121,29 @@
 			
 					<div class="clear"> </div>
 					<!---start-pagenation-----> 
-					<div class="pagenation">
-						<ul>
+<!-- 					<div class="pagenation"> -->
+<!-- 						<ul> -->
 						
-						<c:forEach begin="1" end="${pages}" var="i">
-							<c:choose>
-    							<c:when test="${i == page}">
-    								<c:set var="pageClass" value="pagenation-selected"/>
-    							</c:when>
- 								<c:otherwise>
- 									<c:set var="pageClass" value=""/>
- 							   </c:otherwise>
-							</c:choose>						
+<%-- 						<c:forEach begin="1" end="${pages}" var="i"> --%>
+<%-- 							<c:choose> --%>
+<%--     							<c:when test="${i == page}"> --%>
+<%--     								<c:set var="pageClass" value="pagenation-selected"/> --%>
+<%--     							</c:when> --%>
+<%--  								<c:otherwise> --%>
+<%--  									<c:set var="pageClass" value=""/> --%>
+<%--  							   </c:otherwise> --%>
+<%-- 							</c:choose>						 --%>
 						
 							
-    						<li><a class="${pageClass}" href="home?page=${i}"><c:out value="${i}"/></a></li>
-						</c:forEach>	
-						<c:if test="${page < pages}">
-							<li><a href="home?page=${page + 1}">Next</a></li>
-						</c:if>						
+<%--     						<li><a class="${pageClass}" href="home?page=${i}"><c:out value="${i}"/></a></li> --%>
+<%-- 						</c:forEach>	 --%>
+<%-- 						<c:if test="${page < pages}"> --%>
+<%-- 							<li><a href="home?page=${page + 1}">Next</a></li> --%>
+<%-- 						</c:if>						 --%>
 						
-						</ul>
-					</div>
-					<div class="clear"> </div>
+<!-- 						</ul> -->
+<!-- 					</div> -->
+<!-- 					<div class="clear"> </div> -->
 					<!---End-pagenation----->
 				</div>
 			</div>
