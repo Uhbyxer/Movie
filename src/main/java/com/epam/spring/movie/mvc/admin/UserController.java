@@ -26,7 +26,7 @@ public class UserController {
 	@Autowired 
 	private AuditoriumService auditoriumService;
 
-	@RequestMapping("/admin/users")
+	@RequestMapping("/admin-users")
 	public ModelAndView getEventsAndAuditoriums(HttpServletRequest request) {
 		
 //		int eventsCount = eventService.getCount();
