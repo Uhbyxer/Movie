@@ -108,7 +108,7 @@
 						</c:choose>
 						
 						<div class="${gridClass}">
-							<a href="movies/${user.id}"><img src="images/user${user.id}.png" title="allbum-name" /></a>
+							<a href="admin-users/${user.id}"><img src="images/user${user.id}.png" title="allbum-name" /></a>
 							<h3>${user.name}</h3>
 							<ul>
 								<li><a href="#"><img src="images/likes.png" title="image-name" /></a></li>
