@@ -16,7 +16,7 @@ import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
-public class TicketsPdfBuilder extends AbstractITextPdfView {
+public class UserTicketsPdfBuilder extends AbstractITextPdfView {
 
 	@Override
 	protected void buildPdfDocument(Map<String, Object> model, Document doc, PdfWriter writer,
