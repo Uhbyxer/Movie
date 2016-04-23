@@ -81,13 +81,13 @@
 			<artifactId>jstl</artifactId>
 			<version>${jstl.version}</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>javax.servlet.jsp</groupId>
 			<artifactId>javax.servlet.jsp-api</artifactId>
 			<version>2.3.1</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.apache.taglibs</groupId>
 			<artifactId>taglibs-standard</artifactId>
@@ -119,6 +119,13 @@
 			<version>1.4.191</version>
 		</dependency>
 
+		<dependency>
+			<groupId>com.itextpdf</groupId>
+			<artifactId>itextpdf</artifactId>
+			<version>5.0.6</version>
+		</dependency>
+
+
 	</dependencies>
 
 	<build>
@@ -132,27 +139,22 @@
 					<target>1.8</target>
 				</configuration>
 			</plugin>
-			
-           <plugin>
-               <groupId>org.apache.tomcat.maven</groupId>
-               <artifactId>tomcat8-maven-plugin</artifactId>
-               <version>2.2</version>
-               <!-- Config: contextPath and Port (Default - /SpringMVCVelocity : 8080) -->
-               <!--
-               <configuration>
-                   <path>/</path>
-                   <port>8899</port>
-               </configuration>
-               -->   
-               
+
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat8-maven-plugin</artifactId>
+				<version>2.2</version>
+				<!-- Config: contextPath and Port (Default - /SpringMVCVelocity : 8080) -->
+				<!-- <configuration> <path>/</path> <port>8899</port> </configuration> -->
+
 				<configuration>
 					<source>1.8</source>
 					<target>1.8</target>
-				</configuration>               
-               
-           </plugin>			
-			
-			
+				</configuration>
+
+			</plugin>
+
+
 		</plugins>
 	</build>
 

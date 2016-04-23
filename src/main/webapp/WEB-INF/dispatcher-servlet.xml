@@ -14,8 +14,20 @@
   <context:component-scan base-package="com.epam.*" />
   <context:annotation-config />
   
+    <bean class="org.springframework.web.servlet.view.ResourceBundleViewResolver">
+		<property name="order">
+			<value>1</value>
+		</property>
+		<property name="basename">
+			<value>views</value>
+		</property>		        
+    </bean>
+     
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="order">
+			<value>2</value>
+		</property>
 		<property name="prefix">
 			<value>/WEB-INF/pages/</value>
 		</property>
@@ -28,6 +40,6 @@
  	<mvc:resources mapping="/fonts/**" location="/resources/fonts/"  cache-period="31556926"/>
     <mvc:resources mapping="/images/**" location="/resources/images/"  cache-period="31556926"/> 
     
-    	<mvc:annotation-driven /> 
+    <mvc:annotation-driven /> 
     
 </beans>
