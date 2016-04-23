@@ -1,6 +1,6 @@
 package com.epam.spring.movie.mvc;
 
-import java.time.LocalDate;
+
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-
 import com.epam.spring.movie.bean.Event;
 import com.epam.spring.movie.bean.Ticket;
 import com.epam.spring.movie.bean.User;
@@ -20,7 +19,7 @@ import com.epam.spring.movie.service.TicketService;
 import com.epam.spring.movie.service.UserService;
 
 @Controller
-@RequestMapping("/admin-tickets-pdf")
+@RequestMapping(value = "/admin-tickets-pdf", headers="Accept=application/pdf")
 public class TicketPdfController {
 	
 	@Autowired
@@ -31,7 +30,6 @@ public class TicketPdfController {
 	
 	@Autowired
 	private EventService eventService;
-	
 	
 	@RequestMapping
     public ModelAndView getTicketsForUserPdf(@RequestParam("user") int userId) {

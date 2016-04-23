@@ -1,8 +1,11 @@
 package com.epam.spring.movie.config;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;
+import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import com.epam.spring.movie.converter.LocalDateTimeConverter;
@@ -15,4 +18,9 @@ class WebMvcContext extends WebMvcConfigurerAdapter {
     public void addFormatters(FormatterRegistry registry) {
         registry.addConverter(new LocalDateTimeConverter("yyyy-MM-dd'T'HH:mm"));
     }
+    
+	@Bean(name = "multipartResolver")
+	public StandardServletMultipartResolver resolver() {
+		return new StandardServletMultipartResolver();
+	}
 }
