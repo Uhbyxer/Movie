@@ -14,10 +14,14 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.epam.spring.movie.bean.Event;
 import com.epam.spring.movie.bean.FileBucket;
+import com.epam.spring.movie.bean.User;
 import com.epam.spring.movie.validator.FileValidator;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 
 
@@ -50,12 +54,19 @@ public class FileUploadController {
 			System.out.println("validation errors");
 			return "singleFileUploader";
 		} else {
-			System.out.println("Fetching file");
+			System.out.println("Fetching file111");
 			MultipartFile multipartFile = fileBucket.getFile();
 
 			// Now do something with file...
 			FileCopyUtils.copy(fileBucket.getFile().getBytes(), new File( UPLOAD_LOCATION + fileBucket.getFile().getOriginalFilename()));
 			String fileName = multipartFile.getOriginalFilename();
+			
+			System.out.println("parsing");
+			ObjectMapper mapper = new ObjectMapper();
+			Event event = mapper.readValue(new File( UPLOAD_LOCATION + fileBucket.getFile().getOriginalFilename()), Event.class);
+			
+			System.out.println(event);
+			
 			model.addAttribute("fileName", fileName);
 			return "success";
 		}
