@@ -35,12 +35,9 @@
  </context-param>
  
   <welcome-file-list>  
-   <welcome-file>/events</welcome-file>  
+   <welcome-file>/home</welcome-file>  
   </welcome-file-list>  
   
-
-  
-
  <listener>
      <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
  </listener>

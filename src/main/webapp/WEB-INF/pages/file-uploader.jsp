@@ -5,14 +5,14 @@
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<title>Spring 4 MVC File Upload Example</title>
+	<title>Spring - Movies | Upload data</title>
 	<link href="<c:url value='/css/bootstrap.css' />"  rel="stylesheet" type="text/css"></link>
 	<link href="<c:url value='/css/app.css' />" rel="stylesheet" type="text/css"></link>
 </head>
 <body> 
 
 	<div class="form-container">
-		<h1>Spring 4 MVC File Upload Example </h1>
+		<h1>Upload data</h1>
 		<form:form method="POST" modelAttribute="fileBucket" enctype="multipart/form-data" class="form-horizontal">
 		
 			<div class="row">
@@ -33,7 +33,7 @@
 				</div>
 			</div>
 		</form:form>
-		<a href="<c:url value='/welcome' />">Home</a>
+		<a href="<c:url value='/home' />">Home</a>
 	</div>
 </body>
 </html>
