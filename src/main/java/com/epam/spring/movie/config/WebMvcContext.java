@@ -19,8 +19,8 @@ class WebMvcContext extends WebMvcConfigurerAdapter {
         registry.addConverter(new LocalDateTimeConverter("yyyy-MM-dd'T'HH:mm"));
     }
     
-	@Bean(name = "multipartResolver")
-	public StandardServletMultipartResolver resolver() {
-		return new StandardServletMultipartResolver();
-	}
+//	@Bean(name = "multipartResolver")
+//	public StandardServletMultipartResolver resolver() {
+//		return new StandardServletMultipartResolver();
+//	}
 }
