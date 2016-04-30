@@ -20,8 +20,6 @@ public final class LocalDateTimeConverter implements Converter<String, LocalDate
             return null;
         }
         
-        System.out.println("val: " + LocalDateTime.parse(source, formatter));
- 
         return LocalDateTime.parse(source, formatter);
     }
 

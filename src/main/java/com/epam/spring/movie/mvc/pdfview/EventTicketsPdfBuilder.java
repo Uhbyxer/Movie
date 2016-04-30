@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.epam.spring.movie.bean.Event;
 import com.epam.spring.movie.bean.Ticket;
-import com.epam.spring.movie.bean.User;
+
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.Font;
