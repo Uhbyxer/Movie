@@ -15,7 +15,6 @@ import com.epam.spring.movie.service.AuditoriumService;
 import com.epam.spring.movie.service.EventService;
 
 @Controller
-//@RequestMapping(value = { "/", "/events" })
 public class HomeController {
 	private static int EVENTS_PER_PAGE = 12;
 
@@ -24,18 +23,6 @@ public class HomeController {
 	
 	@Autowired 
 	private AuditoriumService auditoriumService;
-
-	
-	//..., headers = "accept/text/*"
-	//..., params = {"find=ByMake", "form"}
-	
-//	@RequestMapping(value = { "/", "/events" }, method = RequestMethod.GET)
-//	public String getAllEvents(Model model) {
-//		List<Event> events = eventService.getAll();
-//		model.addAttribute("events", events);
-//		return "events";
-//	}
-//	
 
 	@RequestMapping(value = { "/", "/home" })
 	public ModelAndView getEventsAndAuditoriums(HttpServletRequest request) {

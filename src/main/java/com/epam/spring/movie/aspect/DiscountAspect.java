@@ -13,6 +13,7 @@ import com.epam.spring.movie.service.UserDiscountCounterService;
 
 //@Aspect
 //@Component
+@SuppressWarnings("unused")
 public class DiscountAspect {
 	
 	//@Autowired

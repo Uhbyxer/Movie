@@ -2,11 +2,8 @@ package com.epam.spring.movie.dao.impl;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.ZoneId;
 import java.util.List;
-
 import org.springframework.jdbc.core.RowMapper;
-
 import com.epam.spring.movie.bean.Event;
 import com.epam.spring.movie.dao.EventDao;
 
@@ -20,7 +17,6 @@ public class EventDaoImpl extends BaseNamedDaoImpl<Event> implements EventDao {
 	
 	private static final String GET_COUNT = "select count(*) from event"; 
 
-
 	@Override
 	protected Event getBeanFromResultSet(ResultSet rs) throws SQLException {
 		Event event = new Event();
@@ -30,8 +26,6 @@ public class EventDaoImpl extends BaseNamedDaoImpl<Event> implements EventDao {
 		event.setRating(rs.getInt("rating"));
 		return event;
 	}
-	
-	
 	
 	@Override
 	public void create(Event event) {
@@ -91,8 +85,6 @@ public class EventDaoImpl extends BaseNamedDaoImpl<Event> implements EventDao {
 		});
 	}
 
-
-
 	@Override
 	public int getCount() {
 		
@@ -102,5 +94,4 @@ public class EventDaoImpl extends BaseNamedDaoImpl<Event> implements EventDao {
 
 	}
 	
-
 }
