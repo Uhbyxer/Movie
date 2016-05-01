@@ -15,6 +15,7 @@ import com.epam.spring.movie.service.TicketService;
 import com.epam.spring.movie.service.UserService;
 
 @Controller
+@RequestMapping("/admin-users")
 public class UserController {
 
 	@Autowired
@@ -26,7 +27,7 @@ public class UserController {
 	@Autowired
 	private TicketService ticketService;
 	
-	@RequestMapping("/admin-users")
+	@RequestMapping
 	public ModelAndView getUsers(HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView("admin-users");
 
@@ -39,7 +40,7 @@ public class UserController {
 		return mav;
 	}
 
-	@RequestMapping(value = "/admin-users/{id}")
+	@RequestMapping(value = "/{id}")
 	public ModelAndView getUserById(@PathVariable Integer id) {
 		
 		User user = userService.getById(id);

@@ -36,7 +36,7 @@ public class EventTicketsPdfBuilder extends AbstractITextPdfView {
 		
         PdfPTable table = new PdfPTable(5);
         table.setWidthPercentage(100.0f);
-        table.setWidths(new float[] {3.0f, 2.0f, 2.0f, 2.0f, 1.0f});
+        table.setWidths(new float[] {1.0f, 2.0f, 2.0f, 3.0f, 1.0f});
         table.setSpacingBefore(10);
          
         // define font for table header row
@@ -49,16 +49,16 @@ public class EventTicketsPdfBuilder extends AbstractITextPdfView {
         cell.setPadding(5);
 
         // write table header
-        cell.setPhrase(new Phrase("Book Title", font));
+        cell.setPhrase(new Phrase("#", font));
         table.addCell(cell);
          
-        cell.setPhrase(new Phrase("Author", font));
+        cell.setPhrase(new Phrase("Auditorium", font));
         table.addCell(cell);
  
-        cell.setPhrase(new Phrase("ISBN", font));
+        cell.setPhrase(new Phrase("Seat", font));
         table.addCell(cell);
          
-        cell.setPhrase(new Phrase("Published Date", font));
+        cell.setPhrase(new Phrase("User", font));
         table.addCell(cell);
          
         cell.setPhrase(new Phrase("Price", font));

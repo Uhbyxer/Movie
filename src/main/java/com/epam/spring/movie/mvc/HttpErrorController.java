@@ -10,8 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
+@RequestMapping("/error")
 public class HttpErrorController {
-	@RequestMapping("/error")
+	
 	public ModelAndView handelError(HttpServletRequest request) {
 		// Lets get the status code and uri from the request
 		final Integer statusCode = (Integer) request.getAttribute("javax.servlet.error.status_code");
