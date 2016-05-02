@@ -11,25 +11,24 @@ import com.epam.spring.movie.bean.User;
 
 public interface TicketService {
 	
-	public List<Ticket> getTicketsForEvent(Event event, LocalDateTime dateTime);
+	List<Ticket> getTicketsForEvent(Event event, LocalDateTime dateTime);
 
-	public void create(Ticket ticket);
+	void create(Ticket ticket);
 
-	public void remove(Ticket ticket);
+	void remove(Ticket ticket);
 
-	public List<Ticket> getAll();
+	List<Ticket> getAll();
 
-	public Ticket getById(Integer id);
+	Ticket getById(Integer id);
 	
-	public long getCountOfTicketsForUser(User user);
+	long getCountOfTicketsForUser(User user);
 
-	public void calculatePrice(Ticket ticket);
+	void calculatePrice(Ticket ticket);
 
-	public boolean isBooked(LocalDateTime dateTime, Auditorium auditorium, Integer seat);
+	boolean isBooked(LocalDateTime dateTime, Auditorium auditorium, Integer seat);
 	
-	public List<Ticket> getTicketsForUser(User user);
+	List<Ticket> getTicketsForUser(User user);
 	
-	public void bookTicket(Ticket ticket);
-	
+	void bookTicket(Ticket ticket);
 		
 }

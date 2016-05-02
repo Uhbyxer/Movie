@@ -5,18 +5,21 @@ import java.util.List;
 
 import com.epam.spring.movie.bean.Assignment;
 import com.epam.spring.movie.bean.Auditorium;
+import com.epam.spring.movie.bean.Event;
 
 
 public interface AssignmentService {
 
-	public boolean isAssigned(Auditorium auditorium, LocalDateTime dateTime);
+	boolean isAssigned(Auditorium auditorium, LocalDateTime dateTime);
 
-	public void create(Assignment assignment);
+	void create(Assignment assignment);
 	
-	public void remove(Assignment assignment);
+	void remove(Assignment assignment);
 
-	public List<Assignment> getAll();
+	List<Assignment> getAll();
 
-	public Assignment getById(Integer id);
+	Assignment getById(Integer id);
+	
+	List<Assignment> getForEvent(Event event);
 
 }

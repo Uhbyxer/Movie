@@ -7,22 +7,22 @@ import com.epam.spring.movie.bean.Event;
 
 public interface EventService {
 	
-	public void create(Event event);
+	void create(Event event);
 
-	public void remove(Event event);
+	void remove(Event event);
 
-	public List<Event> getAll();
+	List<Event> getAll();
 	
-	public Event getById(Integer id);
+	Event getById(Integer id);
 
-	public List<Event> getListByName(String name);
+	List<Event> getListByName(String name);
 	
-	public Event getByName(String name);
+	Event getByName(String name);
 	
-	public double getPrice(Event event);
+	double getPrice(Event event);
 	
-	public List<Event> getEventsForPage(int pageNumber, int rowsPerPage);
+	List<Event> getEventsForPage(int pageNumber, int rowsPerPage);
 	
-	public int getCount();
+	int getCount();
 	
 }	

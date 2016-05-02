@@ -7,19 +7,19 @@ import com.epam.spring.movie.bean.UserDiscountCounter;
 
 public interface UserDiscountCounterService {
 	
-	public void create(UserDiscountCounter userDiscountCounter);
+	void create(UserDiscountCounter userDiscountCounter);
 
-	public void remove(UserDiscountCounter userDiscountCounter);
+	void remove(UserDiscountCounter userDiscountCounter);
 
-	public List<UserDiscountCounter> getAll();
+	List<UserDiscountCounter> getAll();
 	
-	public UserDiscountCounter getById(Integer id);
+	UserDiscountCounter getById(Integer id);
 	
-	public UserDiscountCounter getByUserAndDiscount(User user, DiscountStrategy discountStrategy);
+	UserDiscountCounter getByUserAndDiscount(User user, DiscountStrategy discountStrategy);
 	
-	public int incrementAndGetCount(User user, DiscountStrategy discountStrategy);
+	int incrementAndGetCount(User user, DiscountStrategy discountStrategy);
 	
-	public int getTotalCountByDiscount(DiscountStrategy discountStrategy);
+	int getTotalCountByDiscount(DiscountStrategy discountStrategy);
 	
-	public void update(UserDiscountCounter userDiscountCounter); 
+	void update(UserDiscountCounter userDiscountCounter); 
 }

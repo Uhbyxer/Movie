@@ -7,14 +7,14 @@ import com.epam.spring.movie.bean.Auditorium;
 
 public interface AuditoriumService {
 
-	public void create(Auditorium auditorium);
+	void create(Auditorium auditorium);
 
-	public void remove(Auditorium auditorium);
+	void remove(Auditorium auditorium);
 
-	public List<Auditorium> getAll();
+	List<Auditorium> getAll();
 		
-	public Auditorium getById(Integer id);
+	Auditorium getById(Integer id);
 
-	public List<Auditorium> getListByName(String name);
+	List<Auditorium> getListByName(String name);
 
 }

@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.epam.spring.movie.bean.Assignment;
 import com.epam.spring.movie.bean.Auditorium;
+import com.epam.spring.movie.bean.Event;
 import com.epam.spring.movie.dao.AssignmentDao;
 import com.epam.spring.movie.service.AssignmentService;
 
@@ -39,6 +40,11 @@ public class AssignmentServiceImpl implements AssignmentService {
 	@Override
 	public Assignment getById(Integer id) {
 		return assignmentDao.getById(id);
+	}
+
+	@Override
+	public List<Assignment> getForEvent(Event event) {
+		return assignmentDao.getForEvent(event);
 	}
 
 }

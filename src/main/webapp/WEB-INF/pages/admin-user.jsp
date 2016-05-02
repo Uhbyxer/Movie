@@ -2,6 +2,7 @@
 
 
 <!DOCTYPE HTML>
+<html>
 	<head>
 		<title>Spring - Movies | ${user.name}</title>
 		<link href="<c:url value="/css/style.css" />" rel="stylesheet">
@@ -77,16 +78,12 @@
 				</div>
 				<div class="inner-page">
 				<div class="title">
-					<h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore  </h3>
+					<h3>email: ${user.email}</h3>
 					<ul>
-						<li><h4>By:</h4></li>
-						<li><a href="#">Author</a></li>
-						<li><a href="#"><img src="images/sub.png" title="subscribe">subscribe</a></li>
+						<li><h4>Birth: ${user.birth}</h4></li>
 					</ul>
 				</div>
-				<div class="video-inner">
-					<iframe src="//player.vimeo.com/video/24681824" width="100%" height="500px" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> 
-				</div>
+
 				<div class="clear"> </div>
 				<div class="video-details">
 					<ul>
@@ -121,7 +118,7 @@
 										<input type="text" class="textbox" value="Name:" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}">
 										<input type="text" class="textbox" value="Email:" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}">
 										<input type="text" class="textbox" value="Phone:" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Phone';}">
-										<textarea value="Message:" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Message';}">Message:</textarea>	
+<!-- 										<textarea value="Message:" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Message';}">Message:</textarea>	 -->
 									</form>
 									<a href="#">submit comment</a>
 								</div>

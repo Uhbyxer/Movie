@@ -7,22 +7,22 @@ import com.epam.spring.movie.bean.EventCounter;
 
 public interface EventCounterService {
 	
-	public void create(EventCounter eventCounter);
+	void create(EventCounter eventCounter);
 
-	public void remove(EventCounter eventCounter);
+	void remove(EventCounter eventCounter);
 
-	public List<EventCounter> getAll();
+	List<EventCounter> getAll();
 	
-	public EventCounter getById(Integer id);
+	EventCounter getById(Integer id);
 	
-	public EventCounter getByEvent(Event event);
+	EventCounter getByEvent(Event event);
 	
-	public int incrementAndGetByNameCount(Event event);
+	int incrementAndGetByNameCount(Event event);
 	
-	public int incrementAndGetPriceCount(Event event);
+	int incrementAndGetPriceCount(Event event);
 
-	public int incrementAndGetBookCount(Event event);
+	int incrementAndGetBookCount(Event event);
 	
-	public void update(EventCounter eventCounter);
+	void update(EventCounter eventCounter);
 
 }

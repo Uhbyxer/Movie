@@ -1,7 +1,6 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
-
 <!DOCTYPE HTML>
+<html>
 	<head>
 		<title>Spring - Movies | ${event.name}</title>
 		<link href="<c:url value="/css/style.css" />" rel="stylesheet">
@@ -13,7 +12,7 @@
 				<div class="wrap">
 				<!---start-logo---->
 				<div class="logo">
-					<a href="index.html"><img src="images/logo.png" title="logo" /></a>
+					<a href="movies/${event.name}"><img src="images/gridallbum${event.id}.png" title="logo" /></a>
 				</div>
 				<!---End-logo---->
 				<!---start-top-menu-search---->
@@ -47,19 +46,11 @@
 				<div class="sidebar-boxs">
 					<div class="clear"> </div>
 					<div class="type-videos">
-						<h3>Categories</h3>
+						<h3>Schedule</h3>
 						<ul>
-							<li><a href="#">Lorem ipsum dolor</a></li>
-							<li><a href="#">Lorem ipsum dolor</a></li>
-							<li><a href="#">Lorem ipsum dolor</a></li>
-							<li><a href="#">Lorem ipsum dolor</a></li>
-							<li><a href="#">Lorem ipsum dolor</a></li>
-							<li><a href="#">Lorem ipsum dolor</a></li>
-							<li><a href="#">Lorem ipsum dolor</a></li>
-							<li><a href="#">Lorem ipsum dolor</a></li>
-							<li><a href="#">Lorem ipsum dolor</a></li>
-							<li><a href="#">Lorem ipsum dolor</a></li>
-							<li><a href="#">Lorem ipsum dolor</a></li>
+							<c:forEach items="${assignments}" var="assignment">
+								<li>${assignment.auditorium.name} Time: ${assignment.dateTime}</li>
+							</c:forEach>
 						</ul>
 					</div>
 				</div>
@@ -67,7 +58,7 @@
 			<div class="right-content">
 				<div class="right-content-heading">
 					<div class="right-content-heading-left">
-						<h3>Latest Categories of videos</h3>
+						<h3><c:out value="${event.name}"/></h3>
 					</div>
 					<div class="right-content-heading-right">
 						<div class="social-icons">
@@ -85,16 +76,14 @@
 				</div>
 				<div class="inner-page">
 				<div class="title">
-					<h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore  </h3>
+					<h3>Price: <c:out value="${event.name}"/></h3>
 					<ul>
-						<li><h4>By:</h4></li>
-						<li><a href="#">Author</a></li>
-						<li><a href="#"><img src="images/sub.png" title="subscribe">subscribe</a></li>
+						<li><h4>Rating: <c:out value="${event.rating}"/></h4></li>
 					</ul>
 				</div>
-				<div class="video-inner">
-					<iframe src="//player.vimeo.com/video/24681824" width="100%" height="500px" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> 
-				</div>
+<!-- 				<div class="video-inner"> -->
+<!-- 					<iframe src="//player.vimeo.com/video/24681824" width="100%" height="500px" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>  -->
+<!-- 				</div> -->
 				<div class="clear"> </div>
 				<div class="video-details">
 					<ul>
@@ -129,7 +118,6 @@
 										<input type="text" class="textbox" value="Name:" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}">
 										<input type="text" class="textbox" value="Email:" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}">
 										<input type="text" class="textbox" value="Phone:" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Phone';}">
-										<textarea value="Message:" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Message';}">Message:</textarea>	
 									</form>
 									<a href="#">submit comment</a>
 								</div>

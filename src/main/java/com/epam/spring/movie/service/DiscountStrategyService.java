@@ -8,16 +8,16 @@ import com.epam.spring.movie.bean.Ticket;
 
 public interface DiscountStrategyService {
 	
-	public void create(DiscountStrategy discountStrategy);
+	void create(DiscountStrategy discountStrategy);
 
-	public void remove(DiscountStrategy discountStrategy);
+	void remove(DiscountStrategy discountStrategy);
 
-	public List<DiscountStrategy> getAll();
+	List<DiscountStrategy> getAll();
 	
-	public DiscountStrategy getById(Integer id);
+	DiscountStrategy getById(Integer id);
 
-	public List<DiscountStrategy> getListByName(String name);
+	List<DiscountStrategy> getListByName(String name);
 
-	public DiscountStrategy getBestDiscountStrategy(Ticket ticket, long countOfTicketsForUser);
+	DiscountStrategy getBestDiscountStrategy(Ticket ticket, long countOfTicketsForUser);
 
 }

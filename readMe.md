@@ -1,7 +1,7 @@
 Controllers:
 
 EventController:
-Event by name - http://localhost:8080/movie/movies/Dead%20Pool
+Event by name (with assignments for event) - http://localhost:8080/movie/movies/Dead%20Pool
 
 UserController:
 All users - http://localhost:8080/movie/admin-users
@@ -19,7 +19,7 @@ Booked tickets for event and time - http://localhost:8080/movie/admin-tickets-pd
 
 FileUploadController
 Upload and create events -  http://localhost:8080/movie/admin-upload-events
-Upload and create users -  http://localhost:8080/movie/admin-upload-events
+Upload and create users -  http://localhost:8080/movie/admin-upload-users
 
 Files examples U can find in the root of repo folder: upload-files (events.json && users.json)
 
